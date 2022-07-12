@@ -22,17 +22,21 @@ const databaseConfig: DatabaseConfig = {
   connection: Env.get('DB_CONNECTION'),
 
   connections: {
-    /*
-    |--------------------------------------------------------------------------
-    | PostgreSQL config
-    |--------------------------------------------------------------------------
-    |
-    | Configuration for PostgreSQL database. Make sure to install the driver
-    | from npm when using this connection
-    |
-    | npm i pg
-    |
-    */
+    heroku: {
+      client: 'pg',
+      connection: {
+        host: DATABASE_URL.host as string,
+        port: Number(''),
+        user: DATABASE_URL.username as string,
+        password: DATABASE_URL.password as string,
+        database: DATABASE_URL.pathname.substr(1) as string,
+      },
+      migrations: {
+        naturalSort: true,
+      },
+      healthCheck: false,
+      debug: false,
+    },
     pg: {
       client: 'pg',
       connection: {
@@ -48,8 +52,7 @@ const databaseConfig: DatabaseConfig = {
       healthCheck: false,
       debug: false,
     },
-
-  }
+  },
 }
 
 export default databaseConfig
