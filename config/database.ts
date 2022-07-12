@@ -18,17 +18,12 @@ const databaseConfig: DatabaseConfig = {
     heroku: {
       client: 'pg',
       connection: {
-        host: DATABASE_URL.hostname as string,
-        port: Number(DATABASE_URL.port),
-        user: DATABASE_URL.username as string,
-        password: DATABASE_URL.password as string,
-        database: DATABASE_URL.pathname.substr(1) as string,
+        host: Env.get('DB_HOST', DATABASE_URL.hostname),
+        port: Env.get('DB_PORT', DATABASE_URL.port),
+        user: Env.get('DB_USER', DATABASE_URL.username),
+        password: Env.get('DB_PASSWORD', DATABASE_URL.password),
+        database: Env.get('DB_DATABASE', DATABASE_URL.pathname.substr(1)),
       },
-      migrations: {
-        naturalSort: true,
-      },
-      healthCheck: false,
-      debug: false,
     },
 
     pg: {
