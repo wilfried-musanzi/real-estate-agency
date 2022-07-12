@@ -1,10 +1,3 @@
-/**
- * Config source: https://git.io/JesV9
- *
- * Feel free to let us know via PR, if you find something broken in this config
- * file.
- */
-
 import Env from '@ioc:Adonis/Core/Env'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
 import Url from 'url-parse'
@@ -15,7 +8,7 @@ const databaseConfig: DatabaseConfig = {
   connection: Env.get('DB_CONNECTION'),
 
   connections: {
-    heroku: {
+    prod: {
       client: 'pg',
       connection: {
         host: Env.get('DB_HOST', DATABASE_URL.hostname),
