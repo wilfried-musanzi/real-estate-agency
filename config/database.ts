@@ -9,7 +9,7 @@ import Env from '@ioc:Adonis/Core/Env'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
 import Url from 'url-parse'
 
-const DATABASE_URL = new Url(Env.get('DATABASE_URL'))
+const DATABASE_URL = new Url(Env.get('HEROKU_POSTGRESQL_AQUA_URL'))
 
 const databaseConfig: DatabaseConfig = {
   connection: Env.get('DB_CONNECTION'),
@@ -22,7 +22,7 @@ const databaseConfig: DatabaseConfig = {
         port: Env.get('DB_PORT', DATABASE_URL.port),
         user: Env.get('DB_USERNAME', DATABASE_URL.username),
         password: Env.get('DB_PASSWORD', DATABASE_URL.password),
-        database: Env.get('DB_DATABASE', DATABASE_URL.pathname.substring(1)),
+        database: Env.get('DB_DATABASE', DATABASE_URL.pathname.substr(1)),
       },
       migrations: {
         naturalSort: true,
