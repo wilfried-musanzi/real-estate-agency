@@ -7,32 +7,18 @@
 
 import Env from '@ioc:Adonis/Core/Env'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
-import Url from 'url-parse'
-
-const DATABASE_URL = new Url(Env.get('DATABASE_URL'))
 
 const databaseConfig: DatabaseConfig = {
-  /*
-  |--------------------------------------------------------------------------
-  | Connection
-  |--------------------------------------------------------------------------
-  |
-  | The primary connection for making database queries across the application
-  | You can use any key from the `connections` object defined in this same
-  | file.
-  |
-  */
   connection: Env.get('DB_CONNECTION'),
-
   connections: {
     heroku: {
       client: 'pg',
       connection: {
-        host: DATABASE_URL.host as string,
-        port: Number(''),
-        user: DATABASE_URL.username as string,
-        password: DATABASE_URL.password as string,
-        database: DATABASE_URL.pathname.substr(1) as string,
+        host: Env.get('DB_HOST'),
+        port: Env.get('DB_PORT'),
+        user: Env.get('DB_USERNAME'),
+        password: Env.get('DB_PASSWORD'),
+        database: Env.get('DB_DATABASE'),
       },
       migrations: {
         naturalSort: true,
