@@ -15,7 +15,7 @@ const databaseConfig: DatabaseConfig = {
   connection: Env.get('DB_CONNECTION'),
 
   connections: {
-    pg: {
+    heroku: {
       client: 'pg',
       connection: {
         host: Env.get('DB_HOST', DATABASE_URL.hostname),
@@ -23,6 +23,21 @@ const databaseConfig: DatabaseConfig = {
         user: Env.get('DB_USER', DATABASE_URL.username),
         password: Env.get('DB_PASSWORD', DATABASE_URL.password),
         database: Env.get('DB_DATABASE', DATABASE_URL.pathname.substr(1)),
+      },
+      migrations: {
+        naturalSort: true,
+      },
+      healthCheck: false,
+      debug: false,
+    },
+    pg: {
+      client: 'pg',
+      connection: {
+        host: Env.get('PG_HOST'),
+        port: Env.get('PG_PORT'),
+        user: Env.get('PG_USER'),
+        password: Env.get('PG_PASSWORD'),
+        database: Env.get('PG_DB_NAME'),
       },
       migrations: {
         naturalSort: true,
