@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: agency
+      POSTGRES_DB: real-estate
   adminer:
     image: adminer
     restart: always

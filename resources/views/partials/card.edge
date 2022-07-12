@@ -1,0 +1,14 @@
+<div class="col-md-3 mb-4">
+    <div class="card"  style="width: 17rem; ">
+        <img class="card-img-top" src="{{ property.thumb ? asset(`assets/images/${property.thumb}`) : asset('assets/images/default.png') }}" alt=Image" height="200" style="object-fit:cover">
+        <div class="card-body">
+            <h6 class="card-title text-primary" style="font-size: 15px">{{ property.title }}</h6>
+            <p class="card-text">{{ nl2br( excerpt(property.description, 50, {
+                completeWords: false
+            })) }}</p>
+        </div>
+        <div class="card-footer">
+            <h5 card-text>{{ property.price }}$ &mdash; {{ property.surface }}m2</h5>
+        </div>
+    </div>
+</div>

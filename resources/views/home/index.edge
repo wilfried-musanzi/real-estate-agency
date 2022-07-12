@@ -1,0 +1,15 @@
+@layout('home/base')
+@layout('layouts/main')
+@set('title', 'Home Page')
+@section('body')
+  @include('partials/flash')
+  <div class="row">
+    <div class="col-md-3" style="margin: 0  1rem 0 0">
+      <h2 style="margin-bottom: 5rem;">Last recently sold properties</h2>
+      <p class="text" style="font-size: 1.4rem; margin-bottom: 5rem;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime repellat rerum recusandae saepe voluptatem alias</p>
+    </div>
+    @each(property in properties)
+      @include('partials/card')
+    @end
+  </div>
+@end

@@ -1,0 +1,46 @@
+@layout('home/base')
+@set('title', "Administration new")
+@section('body')
+@include('partials/flash')
+<div class="nk-content ">
+    <div class="nk-block nk-block-middle nk-auth-body  wide-xs">
+        <div class="card card-bordered">
+            <div class="card-inner card-inner-lg">
+                <div class="nk-block-head">
+                    <div class="nk-block-head-content">
+                        <h4 class="nk-block-title">Sign-up</h4>
+                    </div>
+                </div>
+                <form action="" method="post" enctype="multipart/form-data" class="form-group">
+                    <div class="mt-4 mb-2">
+                        @component('components/form', {
+                            name: "email",
+                            label: "Email",
+                            type: "email",
+                        })
+                        @end
+                    </div>
+                    <div class="mb-4">
+                        @component('components/form', {
+                            name: "password",
+                            label: "Password",
+                            type: "password",
+                        })  
+                        @end
+                    </div>
+                    <div class="">
+                        @component('components/form', {
+                            name: "confirm-password",
+                            label: "Confirm Password",
+                            type: "password",
+                        })  
+                        @end
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block mt-4" type="submit" >Connexion</button>
+                </form>
+            </div>
+        </div>
+    </div>         
+</div>         
+  
+@end
