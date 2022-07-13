@@ -1,12 +1,12 @@
-# REAL ESTATE AGENCY
+## REAL ESTATE AGENCY
 
-## Installation
+### Installation
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+### Running the app
 
 ```bash
 $ npm run dev
