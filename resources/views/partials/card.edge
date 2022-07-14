@@ -1,14 +1,22 @@
-<div class="col-md-3 mb-4">
-    <div class="card"  style="width: 17rem; ">
-        <img class="card-img-top" src="{{ property.thumb ? asset(`assets/images/${property.thumb}`) : asset('assets/images/default.png') }}" alt=Image" height="200" style="object-fit:cover">
-        <div class="card-body">
-            <h6 class="card-title text-primary" style="font-size: 15px">{{ property.title }}</h6>
-            <p class="card-text">{{ nl2br( excerpt(property.description, 50, {
-                completeWords: false
-            })) }}</p>
-        </div>
-        <div class="card-footer">
-            <h5 card-text>{{ property.price }}$ &mdash; {{ property.surface }}m2</h5>
+<div class="lg:col-span-2">
+    <div class="flex h-full flex-col justify-between rounded-xl bg-white px-8 py-12 shadow-lg sm:px-12 lg:px-8">
+        <div class="mb-6 space-y-4">
+            <img
+                src="{{ property.thumb ? asset(`assets/images/${property.thumb}`) : asset('assets/images/default.png') }}"
+                alt="illustration"
+                loading="lazy"
+                width="616"
+                height="400"
+            />
+            <h3 class="text-2xl font-semibold text-cyan-900">
+               {{ property.title }}
+            </h3>
+            <p>
+               {{ property.description }}
+            </p>
+            <div class="card-footer">
+                <h5 card-text>{{ property.price }}$ &mdash; {{ property.surface }}m2</h5>
+            </div>
         </div>
     </div>
 </div>

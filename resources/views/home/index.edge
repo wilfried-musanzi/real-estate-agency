@@ -3,13 +3,27 @@
 @set('title', 'Home Page')
 @section('body')
   @include('partials/flash')
+   <section class="section section--hero container">
+      <div class="hero__body">
+        <div class="hero__description">
+          Faites une visite en toute securite, nous offrons des immeubles
+          certifies et valider par nos experts.
+          <div class="hero__btns">
+            <a href="{{ route('properties.index')}}" class="hero__link cta--link">Immeubles</a>
+            <a href="" class="hero__link cta--btn">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
   <div class="row">
-    <div class="col-md-3" style="margin: 0  1rem 0 0">
-      <h2 style="margin-bottom: 5rem;">Last recently sold properties</h2>
-      <p class="text" style="font-size: 1.4rem; margin-bottom: 5rem;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad maxime repellat rerum recusandae saepe voluptatem alias</p>
+    <div class="bg-gradient-to-br bg-white py-16">
+      <div class="container m-auto px-6 text-gray-500 md:px-12 xl:px-0">
+        <div class="grid gap-6 lg:grid-cols-7">
+        @each(property in properties)
+          @include('partials/card')
+        @end
+        </div>
+      </div>
     </div>
-    @each(property in properties)
-      @include('partials/card')
-    @end
   </div>
 @end
