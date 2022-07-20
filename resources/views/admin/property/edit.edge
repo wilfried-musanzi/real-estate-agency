@@ -1,9 +1,0 @@
-@layout('admin/base')
-@set('title', "Administration new")
-@section('body')
-    <h4>Modifie the property {{ property.title }}</h4>
-    <form action="" method="post" enctype="multipart/form-data" class="form-group" data-turbo="false">
-        @include('admin/property/form')
-        <button class="btn btn-primary mt-4 mb-2" type="submit" >Update</button>
-    </form>
-@end

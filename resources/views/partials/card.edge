@@ -1,22 +1,20 @@
-<div class="lg:col-span-2">
-    <div class="flex h-full flex-col justify-between rounded-xl bg-white px-8 py-12 shadow-lg sm:px-12 lg:px-8">
-        <div class="mb-6 space-y-4">
-            <img
-                src="{{ property.thumb ? asset(`assets/images/${property.thumb}`) : asset('assets/images/default.png') }}"
-                alt="illustration"
-                loading="lazy"
-                width="616"
-                height="400"
-            />
-            <h3 class="text-2xl font-semibold text-cyan-900">
-               {{ property.title }}
-            </h3>
-            <p>
-               {{ property.description }}
-            </p>
-            <div class="card-footer">
-                <h5 card-text>{{ property.price }}$ &mdash; {{ property.surface }}m2</h5>
-            </div>
+<div class="card">
+    <div class="card__header">
+        <div class="card__img">
+            <img src="{{ asset('assets/images/pexels-pixabay-271816.webp') }}" alt="" />
         </div>
+        <div class="card__details">
+            <p class="price">240<span>$</span></p>
+            <p class="surface">60<span>m2</span></p>
+        </div>
+    </div>
+    <div class="card__body">
+        <h2 class="card__title">Google LLC</h2>
+        <p class="card__description">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Accusamus doloribus voluptates explicabo magnam esse recusandae
+        exercitationem molestias commodi praesentium accusantium.
+        </p>
+        <a href="" class="btn__primary">Reserver une visite</a>
     </div>
 </div>

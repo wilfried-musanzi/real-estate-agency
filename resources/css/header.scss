@@ -1,0 +1,81 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7rem;
+  padding: 0 6rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 5rem;
+  z-index: 4;
+}
+
+.header__nav {
+  margin-right: 10rem;
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  animation: fadeInUp 0.3s ease-in 0.2s backwards;
+}
+
+.nav__link {
+  &:link,
+  &:visited {
+    color: $light-2;
+    transition: all 0.3s;
+  }
+
+  &:hover,
+  &:active {
+    color: $light-1;
+  }
+}
+
+.link__cta {
+  &:link,
+  &:visited {
+    background-color: $bleue-3;
+    padding: 1rem 3rem;
+    border-radius: 0.4rem;
+    transition: all 0.3s;
+  }
+
+  &:hover,
+  &:active {
+    color: $light-1;
+    background-color: $bleue-4;
+  }
+}
+
+.header__brand {
+  color: $light-2;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 500;
+  animation: fadeInUp 0.3s ease-in 0.3s backwards;
+  span {
+    color: $green;
+  }
+}
+
+.user__account {
+  &:link,
+  &:visited {
+    color: $light-1;
+    margin-top: -0.2rem;
+  }
+}
+
+.user__logout {
+  &:link,
+  &:visited {
+    color: $light-1;
+    font-size: 1.8rem;
+  }
+}

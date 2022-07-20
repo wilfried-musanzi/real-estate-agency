@@ -1,0 +1,144 @@
+$light-1: #fff;
+$light-2: #f5f7fae5;
+$light-3: #f1f5f9;
+$light-4: #ccc;
+$light-5: rgb(241, 245, 249, 0.9);
+$dark-1: #212529;
+$dark-2: #343a40;
+$dark-3: #000814;
+$bleue-1: #011627;
+$bleue-2: #00afb9;
+$bleue-3: #033052;
+$bleue-4: #022744;
+$bleue-5: rgb(1, 22, 39, 1);
+
+$green: #64ffda;
+$red-1: #ef233c;
+$red-2: #d80b23;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+*:focus {
+  outline: none;
+  box-sizing: 0.5rem 0.5rem $green;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  background-color: $light-1;
+  color: $dark-1;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-weight: 400;
+  position: relative;
+  overflow-x: hidden;
+}
+
+%link {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.sub-container {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+a {
+  &:link,
+  &:visited {
+    @extend %link;
+  }
+}
+
+.btn__primary {
+  &:link,
+  &:visited {
+    padding: 1rem 3rem;
+    border-radius: 0.5rem;
+    background-color: $bleue-3;
+    color: $light-1;
+    font-size: 1.6rem;
+    transition: all 0.3s;
+  }
+  &:hover,
+  &:active {
+    color: $light-1;
+    background-color: $bleue-4;
+  }
+}
+
+.btn__secondary {
+  &:link,
+  &:visited {
+    padding: 1rem 3rem;
+    border-radius: 0.5rem;
+    background-color: $red-1;
+    color: $light-1;
+    font-size: 1.6rem;
+    transition: all 0.3s;
+  }
+  &:hover,
+  &:active {
+    color: $light-1;
+    background-color: $red-2;
+  }
+}
+
+.heading__primary {
+  font-size: 2.5rem;
+  color: $dark-2;
+  margin-bottom: 4rem;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.section {
+  transition: all 0.3s;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(10rem);
+}
+
+.sticky {
+  background: $bleue-5;
+}

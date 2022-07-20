@@ -1,0 +1,30 @@
+@layout('public/base')
+@section('body')
+  <section class="section__profile container">
+      <div class="profile__details">
+        <div class="profile__img" id="profile">
+          <img
+            class="img__profile"
+            src="{{ asset('assets/images/profile.webp') }}"
+            alt="User image"
+          />
+        </div>
+        <h3 class="heading__primary">Standard</h3>
+      </div>
+
+        <div class="edit__profile sub-container">
+            <form action="" class="form form__top">
+            <h4 class="heading__primary">Mes informations</h4>
+            <label for="lname">Nom</label>
+            <input type="email" name="lastname" placeholder="Email" />
+            <label for="lname">Ancien mot de passe</label>
+            <input type="number" name="lastname" nplaceholder="Ancien mot de passe" />
+            <label for="lname">Nouveau mot de passe</label>
+            <input type="number" name="lastname" placeholder="Nouveau mot de passe"/>
+            <label for="lname">Nouveau mot de passe confirmation</label>
+            <input type="number" name="lastname" placeholder="Nouveau mot de passe confirmation"/>
+            <input type="submit" value="Soummettre" />
+            </form>
+        </div>
+    </section>
+@end

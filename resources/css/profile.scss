@@ -1,0 +1,23 @@
+.section__profile {
+  padding: 12.8rem 0 18rem;
+}
+.section__profile {
+  display: flex;
+  gap: 5rem;
+}
+.profile__details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__img {
+  img {
+    width: 15rem;
+    height: 15rem;
+    margin-bottom: 2rem;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    padding: 2rem;
+  }
+}

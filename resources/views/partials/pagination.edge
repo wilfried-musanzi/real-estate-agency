@@ -1,18 +1,22 @@
-<nav>
-    <ul class="pagination mb-4 ">
-        <li class="page-item {{ page == 1 ? 'disabled' : ' '}}">
-            <a class="page-link" href="{{ page == 1 ? ' ' :  '?page=' + (+page-1) }}" tabindex="-1" aria-disabled="true">
-                <span aria-hidden="false">&laquo;</span>
+<nav class="pagination__nav">
+    <ul class="pagination__list">
+        <li class="pagination__item">
+            <a href="" class="pagination__link">
+                <i class="ph-caret-left"></i>
             </a>
         </li>
-        @each(anchor in properties.getUrlsForRange(1, properties.lastPage))            
-            <li class="page-item  {{ anchor.isActive ? 'active' : ' '}}">
-                <a class="page-link" href="{{ anchor.url }}">{{ anchor.page }} </a>
-            </li>
-        @end
-        <li class="page-item {{ page == properties.lastPage ? 'disabled' : ' '}}">
-            <a class="page-link" href="{{ page == properties.lastPage ? ' ' : '?page='+ (+page + 1) }}" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
+        <li class="pagination__item">
+            <a href="" class="pagination__link">1</a>
+        </li>
+        <li class="pagination__item">
+            <a href="" class="pagination__link">2</a>
+        </li>
+        <li class="pagination__item">
+            <a href="" class="pagination__link active">3</a>
+        </li>
+        <li class="pagination__item">
+            <a href="" class="pagination__link">
+                <i class="ph-caret-right"></i>
             </a>
         </li>
     </ul>

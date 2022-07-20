@@ -1,0 +1,51 @@
+.section__pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12.8rem;
+}
+
+.pagination {
+  display: flex;
+  gap: 1rem;
+  font-size: 2rem;
+  margin-top: 4rem;
+  align-items: center;
+}
+
+.pagination__list {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.pagination__item {
+  list-style: none;
+}
+
+.pagination__link {
+  &:link,
+  &:visited {
+    color: $dark-2;
+    font-weight: 300;
+    padding: 1rem 1.5rem;
+    transition: all 0.3s;
+    font-size: 1.6rem;
+    border-radius: 200%;
+  }
+
+  &:hover:not(.active),
+  &:active:not(.active) {
+    background-color: #e5e5e5;
+  }
+}
+
+.active {
+  background-color: $green;
+}
+
+.pagination__link {
+  i {
+    color: $dark-2;
+    font-size: 1.3rem;
+  }
+}

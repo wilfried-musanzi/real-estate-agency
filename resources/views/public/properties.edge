@@ -1,0 +1,19 @@
+@layout('public/base')
+@section('body')
+  <section class="section__properties" style="margin-top: 5rem">
+      <div class="container">
+        <h4 class="heading__primary">Tous les immeubles</h4>
+        <div class="cards">
+          @include('partials/card')
+          @include('partials/card')
+          @include('partials/card')
+          @include('partials/card')
+          @include('partials/card')
+          @include('partials/card')
+        </div>
+      </div>
+    </section>
+    <section class="section__pagination">
+        @include('partials/pagination')
+    </section>
+@end

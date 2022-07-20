@@ -1,0 +1,26 @@
+.footer {
+  background: $bleue-1;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  padding: 5rem;
+}
+.footer__item {
+  color: $light-2;
+}
+.footer__link {
+  &:link,
+  &:visited {
+    color: $light-2;
+    transition: color 0.3s;
+  }
+  &:hover,
+  &:active {
+    color: $light-1;
+  }
+}
+
+.copy {
+  font-size: 2rem;
+  color: $light-2;
+}
