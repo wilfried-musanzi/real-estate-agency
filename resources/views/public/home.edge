@@ -21,83 +21,10 @@
     <div class="container">
       <h4 class="heading__primary">Les immeubles recents</h4>
       <div class="cards">
-        <div class="card">
-          <div class="card__header">
-            <div class="card__img">
-              <img src="{{ asset('assets/images/pexels-pixabay-271816.webp') }}" alt="" />
-            </div>
-            <div class="card__details">
-              <p class="price">240<span>$</span></p>
-              <p class="surface">60<span>m2</span></p>
-            </div>
-          </div>
-          <div class="card__body">
-            <h2 class="card__title">Google LLC</h2>
-            <p class="card__description">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus doloribus
-              voluptates explicabo magnam esse recusandae exercitationem molestias commodi
-              praesentium accusantium.
-            </p>
-            <a href="" class="btn__primary">Reserver une visite</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__header">
-            <div class="card__img">
-              <img src="{{ asset('assets/images/pexels-pixabay-271816.webp') }}" alt="" />
-            </div>
-            <div class="card__details">
-              <p class="price">240<span>$</span></p>
-              <p class="surface">60<span>m2</span></p>
-            </div>
-          </div>
-          <div class="card__body">
-            <h2 class="card__title">Google LLC</h2>
-            <p class="card__description">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus doloribus
-              voluptates explicabo magnam esse recusandae exercitationem molestias commodi
-              praesentium accusantium.
-            </p>
-            <a href="" class="btn__primary">Reserver une visite</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card__header">
-            <div class="card__img">
-              <img src="{{ asset('assets/images/pexels-pixabay-271816.webp') }}" alt="" />
-            </div>
-            <div class="card__details">
-              <p class="price">240<span>$</span></p>
-              <p class="surface">60<span>m2</span></p>
-            </div>
-          </div>
-          <div class="card__body">
-            <h2 class="card__title">Google LLC</h2>
-            <p class="card__description">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus doloribus
-              voluptates explicabo magnam esse recusandae exercitationem molestias commodi
-              praesentium accusantium.
-            </p>
-            <a href="" class="btn__primary">Reserver une visite</a>
-          </div>
-        </div>
+        @include('partials/card')
+        @include('partials/card')
+        @include('partials/card')
       </div>
-    </div>
   </section>
-
-  <section class="section section__contact" id="contact">
-    <div class="sub-container">
-      <h4 class="heading__primary">Entrez en contact avec nous</h4>
-      <form action="" class="form">
-        <label for="fname">Nom</label>
-        <input type="text" id="fname" name="firstname" placeholder="Votre nom" />
-        <label for="lname">Email</label>
-        <input type="email" name="lastname" placeholder="Email" />
-        <label for="subject">Message</label>
-        <textarea name="subject" placeholder="Votre message..." style="height: 20rem"></textarea>
-        <input type="submit" value="Soummettre" />
-      </form>
-    </div>
-  </section>
+  @include('partials/contact')
 @end
