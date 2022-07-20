@@ -11,6 +11,7 @@
   width: 100%;
   margin-bottom: 5rem;
   z-index: 4;
+  background: $bleue-5;
 }
 
 .header__nav {
@@ -21,7 +22,6 @@
   list-style: none;
   display: flex;
   gap: 3rem;
-  animation: fadeInUp 0.3s ease-in 0.2s backwards;
 }
 
 .nav__link {
@@ -58,7 +58,6 @@
   text-transform: uppercase;
   font-size: 2rem;
   font-weight: 500;
-  animation: fadeInUp 0.3s ease-in 0.3s backwards;
   span {
     color: $green;
   }

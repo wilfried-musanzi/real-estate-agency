@@ -1,51 +1,57 @@
 import '../css/main.scss'
+import 'htmx.org'
 
-const hide = document.querySelectorAll('.hide')
+import Toast from './toast'
 
-window.addEventListener('load', () => {
-  hide.forEach((el) => {
-    el.classList.remove('hide')
-  })
-})
+customElements.define('app-toast', Toast)
+// import '@hotwired/turbo'
 
-const sections = document.querySelectorAll('.section')
+// const hide = document.querySelectorAll('.hide')
 
-const revealElement = function (entries, _) {
-  const [entry] = entries
-  if (!entry.isIntersecting) return
-  entry.target.classList.remove('hidden')
-}
+// window.addEventListener('load', () => {
+//   hide.forEach((el) => {
+//     el.classList.remove('hide')
+//   })
+// })
 
-const elementObserver = new IntersectionObserver(revealElement, {
-  root: null,
-  threshold: 0.15,
-})
+// const sections = document.querySelectorAll('.section')
 
-sections.forEach(function (elemetn) {
-  elementObserver.observe(elemetn)
-  elemetn.classList.add('hidden')
-})
+// const revealElement = function (entries, _) {
+//   const [entry] = entries
+//   if (!entry.isIntersecting) return
+//   entry.target.classList.remove('hidden')
+// }
 
-const mainNav = document.querySelector('.header')
-const mainNavHeight = mainNav.getBoundingClientRect().height
-const observer = new IntersectionObserver(
-  (entries) => {
-    const [entry] = entries
-    if (!entry.isIntersecting) mainNav.classList.add('sticky')
-    else mainNav.classList.remove('sticky')
-  },
-  {
-    root: null,
-    threshold: 0,
-    rootMargin: `-${mainNavHeight}px`,
-  }
-)
+// const elementObserver = new IntersectionObserver(revealElement, {
+//   root: null,
+//   threshold: 0.15,
+// })
 
-observer.observe(document.querySelector('.hero'))
-const nav = document.querySelector('.contact')
-nav.addEventListener('click', (e) => {
-  e.preventDefault()
-  console.log(e.target)
-  const href = e.target.getAttribute('href')
-  if (href) document.querySelector(href).scrollIntoView({ behavior: 'smooth' })
-})
+// sections.forEach(function (elemetn) {
+//   elementObserver.observe(elemetn)
+//   elemetn.classList.add('hidden')
+// })
+
+// const mainNav = document.querySelector('.header')
+// const mainNavHeight = mainNav.getBoundingClientRect().height
+// const observer = new IntersectionObserver(
+//   (entries) => {
+//     const [entry] = entries
+//     if (!entry.isIntersecting) mainNav.classList.add('sticky')
+//     else mainNav.classList.remove('sticky')
+//   },
+//   {
+//     root: null,
+//     threshold: 0,
+//     rootMargin: `-${mainNavHeight}px`,
+//   }
+// )
+
+// observer.observe(document.querySelector('.hero'))
+// const nav = document.querySelector('.contact')
+// nav.addEventListener('click', (e) => {
+//   e.preventDefault()
+//   console.log(e.target)
+//   const href = e.target.getAttribute('href')
+//   if (href) document.querySelector(href).scrollIntoView({ behavior: 'smooth' })
+// })

@@ -10,8 +10,7 @@ $bleue-1: #011627;
 $bleue-2: #00afb9;
 $bleue-3: #033052;
 $bleue-4: #022744;
-$bleue-5: rgb(1, 22, 39, 1);
-
+$bleue-5: rgb(1, 22, 39);
 $green: #64ffda;
 $red-1: #ef233c;
 $red-2: #d80b23;
@@ -41,6 +40,7 @@ body {
   font-weight: 400;
   position: relative;
   overflow-x: hidden;
+  font-display: wrap;
 }
 
 %link {

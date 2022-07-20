@@ -1,0 +1,51 @@
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password'],
+select,
+textarea {
+  width: 100%;
+  padding: 1.2rem;
+  border: 0.1rem solid $light-4;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 1.5rem;
+}
+
+input,
+textarea {
+  &:focus {
+    outline: none;
+    border: 0.1rem solid $bleue-2;
+  }
+}
+
+input.is-invalid,
+textarea.is-invalid {
+  border: 0.1rem solid $red-2;
+}
+
+.invalid-message {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: $red-2;
+}
+
+label {
+  margin-bottom: 0.8rem;
+  display: inline-block;
+}
+
+input[type='submit'] {
+  background-color: $bleue-3;
+  color: $light-1;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.form {
+  border-radius: 0.5rem;
+}

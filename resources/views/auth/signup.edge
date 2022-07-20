@@ -2,16 +2,36 @@
 @section('body')
     <section class="section__signup">
         <div class="sub-container">
-            <form action="" class="form">  
+            <form method="POST" class="form">  
                 <h4 class="heading__primary center">S'inscire</h4>
-                <label for="lname">Email</label>
-                <input type="email" name="lastname" placeholder="Email" />
-                <label for="lname">Nom d'utilisateur</label>
-                <input type="text" name="lastname" placeholder="Nom d'utilisateur" />
-                <label for="lname">Mot de passe</label>
-                <input type="number" name="lastname" placeholder="Mot de passe" />
-                <label for="lname">Confirmer le mot de passe</label>
-                <input type="number" name="lastname" placeholder="Mot de passe" />
+                <label for="username">Nom d'utilisateur</label>
+                 @if(flashMessages.has(`errors.username`))
+                    <div class="invalid-message">
+                        {{ flashMessages.get(`errors.username`)}}
+                    </div>
+                @end
+                <input type="text" name="username" value="{{ flashMessages.get('username') || value || ' ' }}" placeholder="Nom d'utilisateur">
+                @component('components/input', {
+                    type: 'email',
+                    placeholder: "Votre Email",
+                    label: "Email",
+                    name: "email",
+                })
+                @end
+                @component('components/input', {
+                    type: 'password',
+                    placeholder: "Votre Mot de passe",
+                    label: "Mot de passe",
+                    name: "password",
+                })
+                @end
+                @component('components/input', {
+                    type: 'password',
+                    placeholder: "Confirmer Mot de passe",
+                    label: "Mot de passe",
+                    name: "confirm-password",
+                })
+                @end
                 <input type="submit" value="Soummettre" />
             </form>
         </div>

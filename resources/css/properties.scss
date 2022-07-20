@@ -1,5 +1,5 @@
 .section__properties {
-  padding-top: 4rem;
+  padding-top: 10rem;
   padding-bottom: 4rem;
   margin-bottom: 12.8rem;
   background-color: $light-3;
@@ -9,6 +9,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 2rem;
+  animation: fadeIn 0.3s ease-in 0.3s backwards;
 }
 
 .card__title {
