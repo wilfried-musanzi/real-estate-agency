@@ -73,12 +73,12 @@ a {
     background-color: $bleue-3;
     color: $light-1;
     font-size: 1.6rem;
-    transition: all 0.3s;
+    transition: background 0.3s;
   }
   &:hover,
   &:active {
     color: $light-1;
-    background-color: $bleue-4;
+    background: $bleue-4;
   }
 }
 
@@ -90,12 +90,12 @@ a {
     background-color: $red-1;
     color: $light-1;
     font-size: 1.6rem;
-    transition: all 0.3s;
+    transition: background 0.3s;
   }
   &:hover,
   &:active {
     color: $light-1;
-    background-color: $red-2;
+    background: $red-2;
   }
 }
 
@@ -131,7 +131,7 @@ a {
   }
 }
 .section {
-  transition: all 0.3s;
+  transition: opacity 0.3s;
 }
 
 .hidden {

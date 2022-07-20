@@ -28,14 +28,14 @@
     color: $dark-2;
     font-weight: 300;
     padding: 1rem 1.5rem;
-    transition: all 0.3s;
+    transition: background 0.3s;
     font-size: 1.6rem;
     border-radius: 200%;
   }
 
   &:hover:not(.active),
   &:active:not(.active) {
-    background-color: #e5e5e5;
+    background: #e5e5e5;
   }
 }
 

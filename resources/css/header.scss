@@ -28,7 +28,7 @@
   &:link,
   &:visited {
     color: $light-2;
-    transition: all 0.3s;
+    transition: color 0.3s;
   }
 
   &:hover,
@@ -43,7 +43,7 @@
     background-color: $bleue-3;
     padding: 1rem 3rem;
     border-radius: 0.4rem;
-    transition: all 0.3s;
+    transition: background 0.3s;
   }
 
   &:hover,
