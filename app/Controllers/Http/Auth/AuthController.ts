@@ -17,17 +17,27 @@ export default class AuthController {
 
   async login({ request, auth, response, session }: HttpContextContract) {
     const payload = await request.validate(LoginValidator)
-    await auth.use('web').attempt(payload.email, payload.password)
-    session.flash({ success: 'Vous êtes connecté.' })
-    return response.redirect().toRoute('home')
+    try {
+      await auth.use('web').attempt(payload.email, payload.password)
+      session.flash({ success: 'Vous êtes connecté.' })
+      return response.redirect().toRoute('home')
+    } catch {
+      session.flash({ err: 'Les données sont invalides.' })
+      return response.redirect().toRoute('login')
+    }
   }
 
   async signup({ request, auth, response, session }: HttpContextContract) {
     const payload = await request.validate(SignupValidator)
-    await User.create({ ...payload, roles: (await User.first()) == null ? ['admin'] : ['user'] })
-    await auth.use('web').attempt(payload.email, payload.password)
-    session.flash({ success: 'Inscription réussie.' })
-    return response.redirect().toRoute('home')
+    try {
+      await User.create({ ...payload, roles: (await User.first()) == null ? ['admin'] : ['user'] })
+      await auth.use('web').attempt(payload.email, payload.password)
+      session.flash({ success: 'Inscription réussie.' })
+      return response.redirect().toRoute('home')
+    } catch {
+      session.flash({ err: 'Inscription échouée, réessayez.' })
+      return response.redirect().toRoute('home')
+    }
   }
 
   async logout({ auth, response, session }: HttpContextContract) {

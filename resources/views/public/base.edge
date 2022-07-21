@@ -10,12 +10,12 @@
   </head>
   <body>
       <section class="hero">
-        @include('partials/navbar')
+        @include('public/partials/navbar')
         @!section('hero')
       </section>
       @!section('body')
-      @include('partials/footer')
+      @include('public/partials/footer')
     <script defer src="/static/app.js"></script>
-    <script defer src="https://unpkg.com/phosphor-icons"></script>
+    <script data-turbo-track="reload" defer src="https://unpkg.com/phosphor-icons"></script>
   </body>
 </html>

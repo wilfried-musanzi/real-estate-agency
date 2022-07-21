@@ -4,30 +4,26 @@
         <div class="sub-container">
             <form method="POST" class="form">  
                 <h4 class="heading__primary center">S'inscire</h4>
-                <label for="username">Nom d'utilisateur</label>
-                 @if(flashMessages.has(`errors.username`))
-                    <div class="invalid-message">
-                        {{ flashMessages.get(`errors.username`)}}
-                    </div>
+                @component('public/components/input', {
+                    type: 'text',
+                    label: "Nom d'utilisateur",
+                    name: "username",
+                })
                 @end
-                <input type="text" name="username" value="{{ flashMessages.get('username') || value || ' ' }}" placeholder="Nom d'utilisateur">
-                @component('components/input', {
+                @component('public/components/input', {
                     type: 'email',
-                    placeholder: "Votre Email",
                     label: "Email",
                     name: "email",
                 })
                 @end
-                @component('components/input', {
+                @component('public/components/input', {
                     type: 'password',
-                    placeholder: "Votre Mot de passe",
                     label: "Mot de passe",
                     name: "password",
                 })
                 @end
-                @component('components/input', {
+                @component('public/components/input', {
                     type: 'password',
-                    placeholder: "Confirmer Mot de passe",
                     label: "Mot de passe",
                     name: "confirm-password",
                 })
