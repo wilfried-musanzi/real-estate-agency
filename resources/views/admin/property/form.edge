@@ -1,6 +1,6 @@
 <div class="row mb-4">
     <div class="col-md-6">
-        @component('components/form', {
+        @component('admin/components/input', {
             name: "title",
             label: "Title",
             type: "text",
@@ -17,7 +17,7 @@
 </div>
 <div class="row mb-4">
     <div class="col-md-6">
-        @component('components/form', {
+        @component('admin/components/input', {
             name: "price",
             label: "Price",
             value: property.price
@@ -25,7 +25,7 @@
         @end
     </div>
     <div class="col-md-6">
-        @component('components/form', {
+        @component('admin/components/input', {
             name: "surface",
             label: "Surface",
             value: property.surface
@@ -35,7 +35,7 @@
 </div>
 <div class="row mb-4">
     <div class="col-md-3">
-        @component('components/form', {
+        @component('admin/components/input', {
             name: "municipalityId",
             label: "Municipality",
             type: "select",
@@ -45,7 +45,7 @@
         @end
     </div>
     <div class="col-md-3">
-        @component('components/form', {
+        @component('admin/components/input', {
             name: "thumb",
             label: "Thumb",
             type: "file",
@@ -53,10 +53,10 @@
         @end
     </div>
     <div class="col-md-6">
-        <img src="{{ property.thumb ? asset(`assets/images/${property.thumb}`) : asset('assets/images/default.png') }}" alt="Images" width="350" height="250" alt="{{ property.thumb }}" style="object-fit:cover">
+        <img src="{{ property.thumb ? asset(`assets/images/${property.thumb}`) : asset('assets/images/pexels-pixabay-271816.webp') }}" alt="Images" width="350" height="250" alt="{{ property.thumb }}" style="object-fit:cover">
     </div>
 </div>
-@component('components/form', {
+@component('admin/components/input', {
     name: "description",
     label: "Description",
     type: "textearea",

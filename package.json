@@ -67,6 +67,7 @@
     "@adonisjs/shield": "^7.0.0",
     "@adonisjs/view": "^6.1.0",
     "@hotwired/turbo": "^7.1.0",
+    "animate.css": "^4.1.1",
     "htmx.org": "^1.8.0",
     "luxon": "^3.0.1",
     "pg": "^8.7.3",

@@ -8,42 +8,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600&display=swap" rel="stylesheet">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/static/dashlite.min.css">
-    <script  data-turbo-track="reload" defer src="/static/bundle.js"></script>
+    <link rel="stylesheet" href="/static/dashlite.css">
+    <link rel="stylesheet" href="/static/theme.css"> 
+    <script src="/static/bundle.js" data-turbo-track="reload"></script>
+    <script src="/static/scripts.js" data-turbo-track="reload"></script>
+    @entryPointScripts('admin')
+    @entryPointStyles('admin')  
 </head>
-<body>
-    <div class="nk-header nk-header-fixed is-light">
-        <div class="container">
-            <div class="nk-header-wrap">
-                <div class="nk-news-text">
-                    <a class="nav-link" href="{{ route("home") }}">Home</a>
-                    <a class="nav-link {{ controller == 'adminDashboard' ? 'active' : ' '}}" href="{{ route("admin") }}" >Dashboard</a>
-                    <a class="nav-link {{ controller == 'adminPropertyController' ? 'active' : ' '}}" href="{{ route("property.index") }}">Properties</a>
-                    <a class="nav-link {{ controller == 'adminMunicipalityController' ? 'active' : ' '}}" href="{{ route("municipality.index") }}">Municipalities</a>
-                </div>
-                <div class="nk-header-tools">
-                    <ul class="nk-quick-nav">
-                        <li class="dropdown user-dropdown">
-                            <div class="user-toggle">
-                                <div class="user-avatar sm">
-                                    <em class="icon ni ni-user-alt"></em>
-                                </div>
-                                <div class="user-info d-none d-md-block">
-                                    <div class="user-status">{{ auth.user.role == 'admin' ? 'Administrator' : 'Standard' }}</div>
-                                    <div class="user-name">{{ auth.user.email }}</div>
-                                </div>
-                            </div>      
-                            <li>
-                                <a href="{{ route('logout')}}"><em class="icon ni ni-signout"></em><span>Logout</span></a>     
-                            </li>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<body class="nk-body bg-lighter npc-general has-sidebar">
+    <div class="nk-app-root">
+        <div class="nk-main">
+            @include('admin/partials/sidebar')
+            <div class="nk-wrap">
+                @include('admin/partials/topbar')
+                <div class="nk-content">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            @!section('body')
+                        </div>
+                    </div>
+                </div> 
+            </div> 
         </div>
-    </div>
-    <div class="container" style="margin-top: 5rem">
-        @!section('body')
-    </div>
+    </div>       
+    
 </body>
 </html>

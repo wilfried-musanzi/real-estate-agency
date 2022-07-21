@@ -2,30 +2,72 @@
 @set('title', "Administration")
 @section('body')
 @include('partials/flash')
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @each(municipality in municipalities)
-              <tr>
-                <td>{{ municipality.id }}</td>
-                <td>{{ municipality.name }}</td>
-                <td>
-                    <a href="{{ route("municipality.edit", { id: municipality.id }) }}" class="btn btn-primary">Editer</a>
-                    <form action="{{ route("municipality.delete", { id: municipality.id }) }}" method="post" style="display:inline-block">
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
-                    </form>
-                </td>
-            </tr>
-            @end
-        </tbody>
-    </table>
-    <div class="d-flex justify-content-end mb-4">
-        <a href="{{ route("municipality.new")}}" class="btn btn-primary">Add New</a>
+    <div class="nk-block-head nk-block-head-sm ">
+        <div class="nk-block-between">
+            <div class="nk-block-head-content">
+                <h3 class="nk-block-title page-title">Communes</h3>
+            </div>
+            <div class="nk-block-head-content">
+            <div class="toggle-wrap nk-block-tools-toggle">
+                <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu">
+                    <em class="icon ni ni-menu-alt-r"></em>
+                </a>
+                <div class="toggle-expand-content" data-content="pageMenu">
+                    <ul class="nk-block-tools g-3">
+                        <li class="nk-block-tools-opt d-none d-sm-block">
+                            <a href="{{ route("municipality.new") }}" class="btn btn-primary">
+                                <em class="icon ni ni-plus"></em><span>Add municipality</span>
+                            </a>
+                        </li>
+                        <li class="nk-block-tools-opt d-block d-sm-none">
+                            <a href="#" class="btn btn-icon btn-primary">
+                                <em class="icon ni ni-plus"></em>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card card-bordered card-preview mt-4">
+        <table class="table table-tranx">
+            <thead>
+                <tr class="tb-tnx-head">
+                    <th class="tb-tnx-id">#</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @each(municipality in municipalities)
+                <tr>
+                    <td>{{ municipality.id }}</td>
+                    <td>{{ municipality.name }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <a
+                                class="text-soft dropdown-toggle btn btn-icon btn-trigger"
+                                data-bs-toggle="dropdown"
+                                data-offset="-8,0"
+                                ><em class="icon ni ni-more-h"></em
+                                ></a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
+                                <ul class="link-list-plain">
+                                    <li>
+                                        <a href="{{ route("municipality.edit", { id: municipality.id }) }}" class="text-primary">Editer</a>
+                                    </li>
+                                    <li>
+                                        <form action="{{ route("municipality.delete", { id: municipality.id }) }}?_method=DELETE" style="display:inline-block;" onclick="return confirm('Really sure to delete ?')">
+                                            <button type="submit" class="btn text-danger">Supprimer</button>
+                                        </form>  
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                @end
+            </tbody>
+        </table>
     </div>
 @end
