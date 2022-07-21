@@ -24,7 +24,7 @@ export default class AuthController {
 
   async signup({ request, auth, response, session }: HttpContextContract) {
     const payload = await request.validate(SignupValidator)
-    User.create({ ...payload, roles: (await User.first()) == null ? ['admin'] : ['user'] })
+    await User.create({ ...payload, roles: (await User.first()) == null ? ['admin'] : ['user'] })
     await auth.use('web').attempt(payload.email, payload.password)
     session.flash({ success: 'Inscription réussie.' })
     return response.redirect().toRoute('home')

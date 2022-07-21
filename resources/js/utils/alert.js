@@ -16,7 +16,8 @@ export const toastSwalMixin = Swal.mixin({
   position: 'top-right',
   timer: 5000,
   showCloseButton: false,
-  timerProgressBar: false,
+  timerProgressBar: true,
+  customClass: 'swal-width',
   showConfirmButton: false,
   didOpen: (toast) => {
     toast.addEventListener('mousehover', Swal.stopTimer)
