@@ -4,13 +4,17 @@ Route.group(() => {
   Route.get('/', 'Public/PublicController.index').as('home')
   Route.get('/immeubles', 'Public/PublicController.properties').as('properties')
   Route.get('/contact', 'Public/ContactController.contactView').as('contact')
-  Route.get('/connexion', 'Auth/AuthController.loginView').as('login')
-  Route.post('/connexion', 'Auth/AuthController.login')
-  Route.get('/inscrption', 'Auth/AuthController.signupView').as('signup')
-  Route.post('/inscrption', 'Auth/AuthController.signup')
-  Route.get('/moi', 'Auth/AuthController.profileView').as('me')
+  Route.get('/login', 'Auth/AuthController.loginView').as('login')
+  Route.post('/login', 'Auth/AuthController.login')
+  Route.get('/signup', 'Auth/AuthController.signupView').as('signup')
+  Route.post('/signup', 'Auth/AuthController.signup')
   Route.get('/logout', 'Auth/AuthController.logout').as('logout')
 }).middleware(['silentAuth'])
+
+Route.group(() => {
+  Route.get('/moi/:id', 'Auth/AuthController.profileView').as('me')
+  Route.post('/moi/:id', 'Auth/AuthController.profileEdit')
+}).middleware(['auth'])
 
 Route.group(() => {
   Route.group(() => {
