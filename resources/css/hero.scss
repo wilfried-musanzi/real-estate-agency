@@ -12,12 +12,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .hero__welcome {
   margin-bottom: 4rem;
   line-height: 1.2;
-  animation: fadeIn 0.3s ease-in 0.1s backwards;
 }
 
 .hero__description {
@@ -25,10 +25,8 @@
   font-size: 1.6rem;
   letter-spacing: 0.2rem;
   color: $light-3;
-  animation: fadeIn 0.3s ease-in 0.2s backwards;
 }
 
 .hero__links {
   position: relative;
-  animation: fadeIn 0.3s ease-in 0.3s backwards;
 }
