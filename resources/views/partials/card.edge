@@ -1,19 +1,17 @@
 <div class="card">
     <div class="card__header">
         <div class="card__img">
-            <img src="{{ asset('assets/images/pexels-pixabay-271816.webp') }}" alt="" />
+            <img src="{{ property.thumb ? asset(`assets/images/${property.thumb}`) : asset('assets/images/pexels-pixabay-271816.webp') }}" alt="" />
         </div>
         <div class="card__details">
-            <p class="price">240<span>$</span></p>
-            <p class="surface">60<span>m2</span></p>
+            <p class="price">{{ property.price }}<span>$</span></p>
+            <p class="surface">{{ property.surface  }}<span>m2</span></p>
         </div>
     </div>
     <div class="card__body">
-        <h2 class="card__title">Google LLC</h2>
+        <h2 class="card__title">{{ property.title }}, {{ property.municipality ? property.municipality.name : ' ' }}</h2>
         <p class="card__description">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-        Accusamus doloribus voluptates explicabo magnam esse recusandae
-        exercitationem molestias commodi praesentium accusantium.
+        {{ property.description }}
         </p>
         <a href="" class="btn__primary">Reserver une visite</a>
     </div>

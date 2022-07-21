@@ -20,9 +20,9 @@
     <div class="container">
       <h4 class="heading__primary">Les immeubles recents</h4>
       <div class="cards">
-        @include('partials/card')
-        @include('partials/card')
-        @include('partials/card')
+        @each(property in properties)
+          @include('partials/card')
+        @end
       </div>
   </section>
 @end

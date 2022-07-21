@@ -1,21 +1,17 @@
 <nav class="pagination__nav">
     <ul class="pagination__list">
         <li class="pagination__item">
-            <a href="" class="pagination__link">
+            <a href="{{ page == 1 ? ' ' :  '?page=' + (+page-1) }}" class="pagination__link">
                 <i class="ph-caret-left"></i>
             </a>
         </li>
+        @each(anchor in properties.getUrlsForRange(1, properties.lastPage))  
+            <li class="pagination__item">
+                <a href="{{ anchor.url }}" class="pagination__link {{ anchor.isActive ? 'active' : ' '}}">{{ anchor.page }}</a>
+            </li>
+        @end
         <li class="pagination__item">
-            <a href="" class="pagination__link">1</a>
-        </li>
-        <li class="pagination__item">
-            <a href="" class="pagination__link">2</a>
-        </li>
-        <li class="pagination__item">
-            <a href="" class="pagination__link active">3</a>
-        </li>
-        <li class="pagination__item">
-            <a href="" class="pagination__link">
+            <a href="{{ page == properties.lastPage ? ' ' : '?page='+ (+page + 1) }}" class="pagination__link">
                 <i class="ph-caret-right"></i>
             </a>
         </li>

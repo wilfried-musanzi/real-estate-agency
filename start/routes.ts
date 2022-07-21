@@ -37,5 +37,4 @@ Route.group(() => {
       Route.post('/delete/:id', 'Admin/Municipality.delete').as('municipality.delete')
     }).prefix('/municipality')
   }).prefix('/admin')
-})
-// .middleware(['auth', 'secureBackend'])
+}).middleware(['auth', 'secureBackend'])
