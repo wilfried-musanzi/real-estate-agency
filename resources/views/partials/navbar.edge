@@ -1,12 +1,12 @@
 <header class="header">
-    <a href="" hx-get="{{ route('home') }}" hx-target="body" class="header__brand"><span>jmk</span></a>
+    <a href="{{ route('home') }}" class="header__brand"><span>jmk</span></a>
     <nav class="header__nav">
       <ul class="nav__list">
         <li class="nav__item">
           @if(auth.user) 
             <a href="{{ route('me') }}" hx-target="body" class="user__account">{{ auth.user.username }}</a> 
           @else
-            <a href="" hx-get="{{ route('login') }}" hx-target="body" class="nav__link">Connexion
+            <a href="{{ route('login') }}" class="nav__link">Connexion
           @end
           </a>
         </li>
@@ -14,7 +14,7 @@
         @if(auth.user)
           <a href="{{ route('logout') }}"  class="user__logout"><i class="ph-sign-out"></i></a> 
         @else
-          <a href="" hx-get="{{ route('signup') }}" hx-target="body" class="nav__link link__cta">Inscrption</a>
+          <a href="{{ route('signup') }}" class="nav__link link__cta">Inscrption</a>
         @end
         </li>
       </ul>

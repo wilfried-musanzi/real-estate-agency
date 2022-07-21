@@ -1,10 +1,10 @@
 import '../css/main.scss'
-import 'htmx.org'
+import '@hotwired/turbo'
+// import 'htmx.org'
 
 import Toast from './toast'
 
 customElements.define('app-toast', Toast)
-// import '@hotwired/turbo'
 
 // const hide = document.querySelectorAll('.hide')
 
