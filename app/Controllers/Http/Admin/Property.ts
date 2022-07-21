@@ -34,7 +34,7 @@ export default class AdminProperty {
 
   async create({ params, request, session, response }: HttpContextContract) {
     await this.handleRequest(params, request)
-    session.flash({ success: 'The property has been created successfully !' })
+    session.flash({ success: 'La proprieté a été créée' })
     return response.redirect().toRoute('property.index', {
       controller: 'adminPropertyController',
     })
@@ -52,7 +52,7 @@ export default class AdminProperty {
 
   async update({ params, request, session, response }: HttpContextContract) {
     await this.handleRequest(params, request)
-    session.flash({ success: 'The property has been updated successfully !' })
+    session.flash({ success: 'La proprieté a été mise à jour' })
     return response.redirect().toRoute('property.index', {
       controller: 'adminPropertyController',
     })
@@ -61,7 +61,7 @@ export default class AdminProperty {
   async delete({ params, session, response }: HttpContextContract) {
     const property = await Property.findOrFail(params.id)
     property.delete()
-    session.flash({ success: 'The property has been updated deleted !' })
+    session.flash({ success: 'La proprieté a été supprimée' })
     return response.redirect().toRoute('property.index', {
       controller: 'adminPropertyController',
     })

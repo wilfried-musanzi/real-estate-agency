@@ -8,29 +8,23 @@ export default class AdminCategory {
     const municipalities = await Database.from(Municipality.table)
     return view.render('admin/municipality/index', {
       municipalities,
-      controller: 'adminMunicipalityController',
     })
   }
   public view({ view }: HttpContextContract) {
-    return view.render('admin/category/new', {
-      controller: 'adminMunicipalityController',
-    })
+    return view.render('admin/municipality/new')
   }
 
   public async addNew({ request, session, response }: HttpContextContract) {
     const payload = await request.validate(MunicipalityValidator)
     await Municipality.create(payload)
-    session.flash({ success: 'The municipality has been created !' })
-    return response.redirect().toRoute('municipality.index', {
-      controller: 'adminMunicipalityController',
-    })
+    session.flash({ success: 'La ville a été créée' })
+    return response.redirect().toRoute('municipality.index')
   }
 
   public async show({ view, params }: HttpContextContract) {
     const municipality = await Municipality.findOrFail(params.id)
     return view.render('admin/municipality/edit', {
       municipality,
-      controller: 'adminMunicipalityController',
     })
   }
 
@@ -38,18 +32,14 @@ export default class AdminCategory {
     const payload = await request.validate(MunicipalityValidator)
     const property = await Municipality.findOrFail(params.id)
     await property.merge(payload).save()
-    session.flash({ success: 'The municipality has been updated !' })
-    return response.redirect().toRoute('municipality.index', {
-      controller: 'adminMunicipalityController',
-    })
+    session.flash({ success: 'La ville a été mise à jour.' })
+    return response.redirect().toRoute('municipality.index')
   }
 
   public async delete({ params, session, response }: HttpContextContract) {
     const property = await Municipality.findOrFail(params.id)
     await property.delete()
-    session.flash({ success: 'The municipality has been deleted !' })
-    return response.redirect().toRoute('municipality.index', {
-      controller: 'adminMunicipalityController',
-    })
+    session.flash({ success: 'La ville a été supprimée' })
+    return response.redirect().toRoute('municipality.index')
   }
 }

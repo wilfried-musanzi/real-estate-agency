@@ -8,12 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600&display=swap" rel="stylesheet">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/static/dashlite.css">
-    <link rel="stylesheet" href="/static/theme.css"> 
-    <script src="/static/bundle.js" data-turbo-track="reload"></script>
-    <script src="/static/scripts.js" data-turbo-track="reload"></script>
     @entryPointScripts('admin')
-    @entryPointStyles('admin')  
+    @entryPointStyles('admin') 
+   
 </head>
 <body class="nk-body bg-lighter npc-general has-sidebar">
     <div class="nk-app-root">
@@ -31,6 +28,7 @@
             </div> 
         </div>
     </div>       
-    
+    <script defer data-turbo-track="reload" src="/static/bundle.js"></script>
+    <script defer data-turbo-track="reload" src="/static/scripts.js"></script>
 </body>
 </html>
