@@ -36,18 +36,6 @@
   .header__brand {
     font-size: 1.5rem;
   }
-  .btn__secondary {
-    &:link,
-    &:visited {
-      font-size: 1.4rem;
-    }
-  }
-  .btn__primary {
-    &:link,
-    &:visited {
-      font-size: 1.4rem;
-    }
-  }
 }
 
 @media screen and (max-width: 59em) {
@@ -65,19 +53,6 @@
   .hero__description {
     font-size: 1.3rem;
   }
-
-  .btn__secondary {
-    &:link,
-    &:visited {
-      font-size: 1.4rem;
-    }
-  }
-  .btn__primary {
-    &:link,
-    &:visited {
-      font-size: 1.4rem;
-    }
-  }
 }
 
 @media screen and (max-width: 44em) {
@@ -86,19 +61,6 @@
   }
 
   .nav__link {
-    &:link,
-    &:visited {
-      font-size: 1.5rem;
-    }
-  }
-  .btn__secondary {
-    &:link,
-    &:visited {
-      font-size: 1.5rem;
-    }
-  }
-
-  .btn__primary {
     &:link,
     &:visited {
       font-size: 1.5rem;

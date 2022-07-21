@@ -12,6 +12,7 @@ $bleue-3: #033052;
 $bleue-4: #022744;
 $bleue-5: rgb(1, 22, 39);
 $green: #64ffda;
+$green-2: #2bcfa9;
 $red-1: #ef233c;
 $red-2: #d80b23;
 
@@ -72,11 +73,11 @@ a {
 .btn__primary {
   &:link,
   &:visited {
-    padding: 1rem 3rem;
-    border-radius: 0.5rem;
+    padding: 10px 30px;
+    border-radius: 5px;
     background-color: $bleue-3;
     color: $light-1;
-    font-size: 1.6rem;
+    font-size: 16px;
     transition: background 0.3s;
   }
   &:hover,
@@ -89,17 +90,16 @@ a {
 .btn__secondary {
   &:link,
   &:visited {
-    padding: 1rem 3rem;
-    border-radius: 0.5rem;
-    background-color: $red-1;
-    color: $light-1;
-    font-size: 1.6rem;
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: $green;
+    color: $bleue-1;
+    font-size: 16px;
     transition: background 0.3s;
   }
   &:hover,
   &:active {
-    color: $light-1;
-    background: $red-2;
+    background: $green-2;
   }
 }
 
@@ -113,10 +113,10 @@ a {
   display: none;
 }
 
-@keyframes fadeInUp {
+@keyframes fadeIn {
   0% {
     opacity: 0;
-    transform: translateY(-2rem);
+    transform: translateY(1rem);
   }
   100% {
     opacity: 1;
@@ -124,16 +124,6 @@ a {
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 .section {
   transition: opacity 0.3s;
 }

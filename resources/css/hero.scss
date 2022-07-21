@@ -32,14 +32,3 @@
   position: relative;
   animation: fadeIn 0.3s ease-in 0.3s backwards;
 }
-
-.hero__img {
-  position: absolute;
-  bottom: -35rem;
-  transform: translate(50%, -70%);
-  img {
-    width: 68rem;
-    height: auto;
-    animation: fadeIn 0.3s ease-in 0.7s backwards;
-  }
-}
