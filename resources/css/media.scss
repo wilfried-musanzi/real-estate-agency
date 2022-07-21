@@ -55,18 +55,19 @@
     font-size: 1.8rem;
   }
   .header__brand {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
+
   .btn__secondary {
     &:link,
     &:visited {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
   }
   .btn__primary {
     &:link,
     &:visited {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
   }
 }
@@ -75,18 +76,7 @@
   html {
     font-size: 58%;
   }
-  .btn__secondary {
-    &:link,
-    &:visited {
-      font-size: 1.6rem;
-    }
-  }
-  .btn__primary {
-    &:link,
-    &:visited {
-      font-size: 1.6rem;
-    }
-  }
+
   .nav__link {
     &:link,
     &:visited {
