@@ -59,11 +59,11 @@
   }
 
   .hero__welcome {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .hero__description {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 
   .btn__secondary {
@@ -94,13 +94,14 @@
   .btn__secondary {
     &:link,
     &:visited {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
   }
+
   .btn__primary {
     &:link,
     &:visited {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
   }
 }
