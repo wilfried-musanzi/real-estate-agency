@@ -72,6 +72,9 @@
 }
 
 @media screen and (max-width: 44em) {
+  .header__brand {
+    display: none;
+  }
   html {
     font-size: 58%;
   }
