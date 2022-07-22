@@ -1,7 +1,6 @@
 import Hash from '@ioc:Adonis/Core/Hash'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
-import SendEmail from 'App/Services/sendEmail'
 import LoginValidator from 'App/Validators/LoginValidator'
 import ProfileValidator from 'App/Validators/ProfileValidator'
 import SignupValidator from 'App/Validators/SignupValidator'
@@ -37,7 +36,6 @@ export default class AuthController {
     const payload = await request.validate(SignupValidator)
     try {
       await User.create({ ...payload, roles: (await User.first()) == null ? ['admin'] : ['user'] })
-      await SendEmail.send(payload)
       await auth.use('web').attempt(payload.email, payload.password)
       session.flash({ success: 'Inscription réussie.' })
       return response.redirect().toRoute('home')
