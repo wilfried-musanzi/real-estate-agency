@@ -4,6 +4,7 @@ Route.group(() => {
   Route.get('/', 'Public/PublicController.index').as('home')
   Route.get('/immeubles', 'Public/PublicController.properties').as('properties')
   Route.get('/contact', 'Public/ContactController.contactView').as('contact')
+  Route.post('/contact', 'Public/ContactController.contact')
   Route.get('/login', 'Auth/AuthController.loginView').as('login')
   Route.post('/login', 'Auth/AuthController.login')
   Route.get('/signup', 'Auth/AuthController.signupView').as('signup')

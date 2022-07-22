@@ -1,14 +1,26 @@
 <section class="section section__contact" id="contact">
     <div class="sub-container">
       <h4 class="heading__primary">Entrez en contact avec nous</h4>
-      <form action="" class="form">
-        <label for="fname">Nom</label>
-        <input type="text" id="fname" name="firstname" placeholder="Votre nom" />
-        <label for="lname">Email</label>
-        <input type="email" name="lastname" placeholder="Email" />
-        <label for="subject">Message</label>
-        <textarea name="subject" placeholder="Votre message..." style="height: 20rem"></textarea>
-        <input type="submit" value="Soummettre" />
+      <form action="" method="POST" class="form">
+        @component('public/components/input', {
+          name: 'name',
+          label: "Nom",
+          type: "text"
+        })
+        @end
+        @component('public/components/input', {
+          name: 'email',
+          label: "Email",
+          type: "email"
+        })
+        @end
+        @component('public/components/input', {
+          name: 'message',
+          label: "Message",
+          type: "textearea"
+        })
+        @end
+        <input type="submit" value="Envoyez" />
       </form>
     </div>
 </section>
