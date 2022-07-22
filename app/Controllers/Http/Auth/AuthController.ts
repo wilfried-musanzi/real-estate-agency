@@ -37,7 +37,7 @@ export default class AuthController {
     const payload = await request.validate(SignupValidator)
     try {
       await User.create({ ...payload, roles: (await User.first()) == null ? ['admin'] : ['user'] })
-      SendEmail.send(payload)
+      await SendEmail.send(payload)
       await auth.use('web').attempt(payload.email, payload.password)
       session.flash({ success: 'Inscription réussie.' })
       return response.redirect().toRoute('home')
