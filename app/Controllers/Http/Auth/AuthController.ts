@@ -48,17 +48,24 @@ export default class AuthController {
     return response.redirect().toRoute('login')
   }
 
+  async sendVerificationEmail(payload, token, session: HttpContextContract['session']) {
+    try {
+      await EmailVerificationService.verify(payload, token)
+    } catch {
+      session.flash({ err: 'Votre email est invalide.' })
+    }
+  }
   async signup({ request, response, session }: HttpContextContract) {
     const payload = await request.validate(SignupValidator)
     const token = string.generateRandom(100)
     try {
+      this.sendVerificationEmail(payload, token, session)
       await User.create({
         ...payload,
         roles: (await User.first()) == null ? ['admin'] : ['user'],
         token,
       })
       session.flash({ success: 'Vérfiez votre boite mail pour activer le compte.' })
-      await EmailVerificationService.verify(payload, token)
       return response.redirect().toRoute('login')
     } catch {
       session.flash({ err: 'Inscription échouée, réessayez.' })
