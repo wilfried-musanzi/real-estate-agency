@@ -27,6 +27,7 @@ export default class AuthController {
     const user = await User.findBy('token', token)
     if (user) {
       await user.merge({ ...user, isChecked: true }).save()
+      await user.merge({ ...user, token: ' ' })
       session.flash({ success: 'Email verifié avec succes, connectez-vous' })
       return response.redirect().toRoute('login')
     }
