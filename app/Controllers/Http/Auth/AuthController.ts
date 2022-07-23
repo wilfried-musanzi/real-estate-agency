@@ -30,7 +30,7 @@ export default class AuthController {
       session.flash({ success: 'Email verifié avec succes, connectez-vous' })
       return response.redirect().toRoute('login')
     }
-    session.flash({ err: 'Lien invalide !' })
+    session.flash({ err: 'Lien invalide.' })
     return response.redirect().toRoute('signup')
   }
 
