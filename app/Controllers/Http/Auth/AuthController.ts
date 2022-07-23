@@ -56,7 +56,7 @@ export default class AuthController {
         roles: (await User.first()) == null ? ['admin'] : ['user'],
         token,
       })
-      session.flash({ success: 'Inscription réussie, connectez-vous.' })
+      session.flash({ success: 'Vérfiez votre boite mail pour activer le compte.' })
       await EmailVerificationService.verify(payload, token)
       return response.redirect().toRoute('login')
     } catch {
