@@ -10,13 +10,12 @@ export default class LoginValidator {
         column: 'email',
       }),
     ]),
-    password: schema.string([]),
+    password: schema.string(),
   })
 
   public messages: CustomMessages = {
     'required': 'Ce champ est requis !',
     'email.email': 'Veuillez saisir un email valide !',
     'email.exists': `Cet email n'existe pas !`,
-    'password.exists': `Ce mot de passe est incorrect`,
   }
 }

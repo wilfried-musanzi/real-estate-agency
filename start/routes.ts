@@ -10,6 +10,7 @@ Route.group(() => {
   Route.get('/signup', 'Auth/AuthController.signupView').as('signup')
   Route.post('/signup', 'Auth/AuthController.signup')
   Route.get('/logout', 'Auth/AuthController.logout').as('logout')
+  Route.get('/verify-email/:token', 'Auth/AuthController.validateEmail').as('verify')
 }).middleware(['silentAuth'])
 
 Route.group(() => {
@@ -35,7 +36,7 @@ Route.group(() => {
       Route.post('/new', 'Admin/Municipality.addNew')
       Route.get('/edit/:id', 'Admin/Municipality.show').as('municipality.edit')
       Route.post('/edit/:id', 'Admin/Municipality.edit')
-      Route.post('/delete/:id', 'Admin/Municipality.delete').as('municipality.delete')
+      Route.delete('/delete/:id', 'Admin/Municipality.delete').as('municipality.delete')
     }).prefix('/municipality')
   }).prefix('/admin')
 }).middleware(['auth', 'secureBackend'])

@@ -1,4 +1,5 @@
 @layout('public/base')
+@set('title',"Agence JMK - Acceuil" )
 @section('hero')
   @include('partials/flash')
   <div class="hero__body sub-container">
@@ -8,9 +9,9 @@
     <p class="hero__description">
       Nous vous offrons ce services dans toute la ville de pour votre bonheur.
     </p>
-    <div class="hero__links" hx-boost="true">
+    <div class="hero__links">
       <a href="{{ route('properties') }}" class="btn__primary">Immeubles</a>
-      <a href="{{ route('contact') }}" class="btn__secondary contact">Contactez-nous</a>
+      <a href="{{ route('contact') }}" class="btn__secondary">Contactez-nous</a>
     </div>
   </div>
 @end

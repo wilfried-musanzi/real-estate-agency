@@ -22,45 +22,21 @@
                         </a>
                     </li>
                     <li class="nk-menu-item has-sub">
-                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                        <a href="#" class="nk-menu-link">
                             <span class="nk-menu-icon">
                                 <em class="icon ni ni-calendar-booking-fill"></em>
                             </span>
                             <span class="nk-menu-text">Réservations</span>
                         </a>
-                        <ul class="nk-menu-sub">
-                            <li class="nk-menu-item">
-                                <a href="html/hotel/bookings.html" class="nk-menu-link">
-                                    <span class="nk-menu-text">Toutes</span>
-                                </a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/hotel/booking-add.html" class="nk-menu-link">
-                                    <span class="nk-menu-text">En cours</span>
-                                </a>
-                            </li>
-            
-                        </ul>
-                    </li>
-                    <li class="nk-menu-item has-sub">
-                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                    </li>                    
+                    <li class="nk-menu-item">
+                        <a href="{{ route('property.index') }}" class="nk-menu-link">
                             <span class="nk-menu-icon">
-                                <em class="icon ni ni-home-fill"></em>
+                                <em class="icon ni ni-users-fill"></em>
                             </span>
                             <span class="nk-menu-text">Properties</span>
                         </a>
-                        <ul class="nk-menu-sub">
-                            <li class="nk-menu-item">
-                                <a href="{{ route('property.index') }}" class="nk-menu-link">
-                                    <span class="nk-menu-text">Touts les immeubles</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="html/hotel/room-type.html" class="nk-menu-link">
-                                    <span class="nk-menu-text">Room Types</span></a>
-                            </li>
-                        </ul>
                     </li>
-        
                     <li class="nk-menu-item">
                         <a href="{{ route('municipality.index') }}" class="nk-menu-link">
                             <span class="nk-menu-icon">

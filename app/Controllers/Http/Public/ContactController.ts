@@ -1,5 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import SendEmail from 'App/Services/sendEmail'
+import ContactService from 'App/Services/ContactService'
 import ContactValidator from 'App/Validators/ContactValidator'
 
 export default class ContactController {
@@ -10,12 +10,12 @@ export default class ContactController {
   async contact({ request, session, response }: HttpContextContract) {
     const payload = await request.validate(ContactValidator)
     try {
-      await SendEmail.send(payload)
-      session.flash({ success: 'Le message a été envoyé' })
-    } catch (e) {
-      session.flash({ err: `Erreur d'envoi, réessayez.${e}` })
-      console.error(e)
+      await ContactService.send(payload)
+      session.flash({ success: 'Votre message a été envoyé' })
+      return response.redirect().toRoute('home')
+    } catch {
+      session.flash({ err: `Erreur d'envoi, réessayez.` })
+      return response.redirect().toRoute('contact')
     }
-    return response.redirect().toRoute('home')
   }
 }

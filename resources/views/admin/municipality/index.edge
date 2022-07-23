@@ -57,7 +57,7 @@
                                         <a href="{{ route("municipality.edit", { id: municipality.id }) }}" class="text-primary">Editer</a>
                                     </li>
                                     <li>
-                                        <form action="{{ route("municipality.delete", { id: municipality.id }) }}?_method=DELETE" style="display:inline-block;" onclick="return confirm('Really sure to delete ?')">
+                                        <form action="{{ route("municipality.delete", { id: municipality.id }) }}?_method=DELETE" method="POST" style="display:inline-block;" onclick="return confirm('Really sure to delete ?')">
                                             <button type="submit" class="btn text-danger">Supprimer</button>
                                         </form>  
                                     </li>

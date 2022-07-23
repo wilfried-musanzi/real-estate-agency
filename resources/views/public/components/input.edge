@@ -5,7 +5,7 @@
       {{ flashMessages.get(`errors.${name}`)}}
     </div>
   @end
-  <textarea type="{{ type }}" name="{{ name }}"  value="{{ value }}" class="{{ flashMessages.has(`errors.${name}`) ? 'is-invalid' : ' ' }}">{{ flashMessages.get(name) || value || ' ' }}</textarea>
+  <textarea type="textarea" name="{{ name }}"  value="{{ value }}" class="{{ flashMessages.has(`errors.${name}`) ? 'is-invalid' : ' ' }}">{{ flashMessages.get(name) || value || ' ' }}</textarea>
  @elseif(type == 'password')
    <label for="{{ name }}">{{ label }}</label>
     @if(flashMessages.has(`errors.${name}`))

@@ -5,7 +5,7 @@ export interface Role {
   label: string
 }
 
-export interface Contact {
+export interface ContactType {
   name: string
   email: string
   message: string

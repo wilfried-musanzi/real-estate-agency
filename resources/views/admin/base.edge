@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script defer data-turbo-track="reload" src="/static/bundle.js"></script>
-    <script defer data-turbo-track="reload" src="/static/scripts.js"></script>
     <title>{{ title }}</title>
+    <script defer src="/static/bundle.js" data-turbo-track="reload"></script>
     @entryPointScripts('admin')
     @entryPointStyles('admin') 
 </head>

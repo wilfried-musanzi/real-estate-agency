@@ -67,7 +67,7 @@
                                             <a href="{{ route("property.edit", {id: property.id}) }}" class="text-primary">Editer</a>
                                         </li>
                                         <li>
-                                             <form action="{{ route("property.delete", { id: property.id})}}?_method=DELETE" style="display:inline-block;" onclick="return confirm('Really sure to delete ?')">
+                                             <form action="{{ route("property.delete", { id: property.id})}}?_method=DELETE" method="post" style="display:inline-block;" onclick="return confirm('Really sure to delete ?')">
                                                 <button type="submit" class="btn text-danger">Supprimer</button>
                                             </form>  
                                         </li>

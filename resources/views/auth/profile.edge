@@ -1,9 +1,10 @@
 @layout('public/base')
+@set('title',"Agence JMK - Profile" )
 @section('body')
 @include('partials/flash')
   <section class="section__profile container">
       <div class="profile__details">
-        <div class="profile__img" id="profile">
+        <div class="profile__img">
           <img
             class="img__profile"
             src="{{ asset('assets/images/profile.webp') }}"

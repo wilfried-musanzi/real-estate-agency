@@ -4,6 +4,8 @@ import User from 'App/Models/User'
 import LoginValidator from 'App/Validators/LoginValidator'
 import ProfileValidator from 'App/Validators/ProfileValidator'
 import SignupValidator from 'App/Validators/SignupValidator'
+import { string } from '@ioc:Adonis/Core/Helpers'
+import EmailVerificationService from 'App/Services/EmailVerificationService'
 
 export default class AuthController {
   loginView({ view }: HttpContextContract) {
@@ -20,28 +22,46 @@ export default class AuthController {
     })
   }
 
-  async login({ request, auth, response, session }: HttpContextContract) {
-    const payload = await request.validate(LoginValidator)
-    try {
-      await auth.use('web').attempt(payload.email, payload.password)
-      session.flash({ success: 'Vous êtes connecté.' })
+  async validateEmail({ params, session, response }: HttpContextContract) {
+    const token = params.token
+    const user = await User.findBy('token', token)
+    if (user) {
+      await user.merge({ ...user, isChecked: true }).save()
+      session.flash({ success: 'Email verifié avec succes' })
       return response.redirect().toRoute('home')
-    } catch {
-      session.flash({ err: 'Les données sont invalides.' })
-      return response.redirect().toRoute('login')
     }
+    session.flash({ err: 'Lien invalide !' })
+    return response.redirect().toRoute('signup')
   }
 
-  async signup({ request, auth, response, session }: HttpContextContract) {
-    const payload = await request.validate(SignupValidator)
-    try {
-      await User.create({ ...payload, roles: (await User.first()) == null ? ['admin'] : ['user'] })
-      await auth.use('web').attempt(payload.email, payload.password)
-      session.flash({ success: 'Inscription réussie.' })
+  async login({ request, auth, response, session }: HttpContextContract) {
+    const payload = await request.validate(LoginValidator)
+    const user = await User.findBy('email', payload.email)
+    console.log(user)
+    if (user && user.isChecked) {
+      await auth.use('web').login(user)
+      session.flash({ success: 'Vous êtes connecté.' })
       return response.redirect().toRoute('home')
+    }
+    session.flash({ err: 'Les données sont invalides.' })
+    return response.redirect().toRoute('login')
+  }
+
+  async signup({ request, response, session }: HttpContextContract) {
+    const payload = await request.validate(SignupValidator)
+    const token = string.generateRandom(100)
+    try {
+      await User.create({
+        ...payload,
+        roles: (await User.first()) == null ? ['admin'] : ['user'],
+        token,
+      })
+      session.flash({ success: 'Inscription réussie, connectez-vous.' })
+      await EmailVerificationService.verify(payload, token)
+      return response.redirect().toRoute('login')
     } catch {
       session.flash({ err: 'Inscription échouée, réessayez.' })
-      return response.redirect().toRoute('home')
+      return response.redirect().toRoute('signup')
     }
   }
 
