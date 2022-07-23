@@ -6,6 +6,9 @@
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
     "docker:up": "docker compose up -d",
+    "db:up": "node ace migration:run --force",
+    "db:down": "node ace migration:rollback batch=0 --force",
+    "db:seed": "node ace db:seed",
     "start": "node server.js",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write ."

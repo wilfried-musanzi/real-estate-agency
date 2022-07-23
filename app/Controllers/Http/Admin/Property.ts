@@ -4,6 +4,7 @@ import Property from 'App/Models/Property'
 import Drive from '@ioc:Adonis/Core/Drive'
 import PropertyValidator from 'App/Validators/PropertyValidator'
 import Municipality from 'App/Models/Municipality'
+import { string } from '@ioc:Adonis/Core/Helpers'
 
 export default class AdminProperty {
   async index({ view, request }: HttpContextContract) {
@@ -13,7 +14,6 @@ export default class AdminProperty {
       .orderBy('id', 'asc')
       .preload('municipality')
       .paginate(page, limit)
-
     properties.baseUrl('/admin/property')
     return view.render('admin/property/index', {
       page,
@@ -79,6 +79,7 @@ export default class AdminProperty {
       if (property.thumb) {
         await Drive.delete(property.thumb)
       }
+      thumb.fileName = string.generateRandom(4) + '.' + thumb.extname
       await thumb.move(Application.resourcesPath('images'))
     }
     property

@@ -2,7 +2,7 @@
 @set('title', "Administration new")
 @section('body')
     <h4>Modify {{ municipality.name }}</h4>
-    <form class="form-group" action="" method="post" enctype="multipart/form-data" data-turbo="false">
+    <form class="form-group" action="" method="post" enctype="multipart/form-data">
        <div class="mb-4">
          @component('admin/components/input', {
             name: "name",

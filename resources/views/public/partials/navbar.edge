@@ -4,7 +4,7 @@
       <ul class="nav__list">
         <li class="nav__item">
           @if(auth.user) 
-            <a href="{{ route('me', {id: auth.user.id }) }}" class="user__account">{{ excerpt(auth.user.username, 5) }}</a> 
+            <a href="{{ route('me', {token: auth.user.token }) }}" class="user__account">{{ excerpt(auth.user.username, 5) }}</a> 
           @else
             <a href="{{ route('login') }}" class="nav__link">Connexion
           @end

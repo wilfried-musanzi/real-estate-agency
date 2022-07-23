@@ -14,8 +14,8 @@ Route.group(() => {
 }).middleware(['silentAuth'])
 
 Route.group(() => {
-  Route.get('/moi/:id', 'Auth/AuthController.profileView').as('me')
-  Route.post('/moi/:id', 'Auth/AuthController.profileEdit')
+  Route.get('/moi/:token', 'Auth/AuthController.profileView').as('me')
+  Route.post('/moi/:token', 'Auth/AuthController.profileEdit')
 }).middleware(['auth'])
 
 Route.group(() => {

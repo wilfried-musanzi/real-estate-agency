@@ -16,7 +16,7 @@ export default class AuthController {
   }
 
   async profileView({ view, params }: HttpContextContract) {
-    const user = await User.find(params.id)
+    const user = await User.findBy('token', params.token)
     return view.render('auth/profile', {
       user,
     })
@@ -25,9 +25,8 @@ export default class AuthController {
   async validateEmail({ params, session, response }: HttpContextContract) {
     const token = params.token
     const user = await User.findBy('token', token)
-    if (user) {
+    if (user && !user.isChecked) {
       await user.merge({ ...user, isChecked: true }).save()
-      await user.merge({ ...user, token: ' ' }).save()
       session.flash({ success: 'Email verifié avec succes, connectez-vous' })
       return response.redirect().toRoute('login')
     }
@@ -38,28 +37,25 @@ export default class AuthController {
   async login({ request, auth, response, session }: HttpContextContract) {
     const payload = await request.validate(LoginValidator)
     const user = await User.findBy('email', payload.email)
-    console.log(user)
+    const token = string.generateRandom(100)
     if (user && user.isChecked) {
-      await auth.use('web').login(user)
-      session.flash({ success: 'Vous êtes connecté.' })
-      return response.redirect().toRoute('home')
+      try {
+        await auth.use('web').attempt(payload.email, payload.password)
+        await user.merge({ ...user, token }).save()
+        session.flash({ success: 'Vous êtes connecté.' })
+        return response.redirect().toRoute('home')
+      } catch {
+        session.flash({ err: 'Les données sont invalides.' })
+        return response.redirect().toRoute('login')
+      }
     }
-    session.flash({ err: 'Les données sont invalides.' })
-    return response.redirect().toRoute('login')
   }
 
-  async sendVerificationEmail(payload, token, session: HttpContextContract['session']) {
-    try {
-      await EmailVerificationService.verify(payload, token)
-    } catch {
-      session.flash({ err: 'Votre email est invalide.' })
-    }
-  }
   async signup({ request, response, session }: HttpContextContract) {
     const payload = await request.validate(SignupValidator)
     const token = string.generateRandom(100)
     try {
-      this.sendVerificationEmail(payload, token, session)
+      await EmailVerificationService.verify(payload, token)
       await User.create({
         ...payload,
         roles: (await User.first()) == null ? ['admin'] : ['user'],
@@ -75,30 +71,21 @@ export default class AuthController {
 
   async profileEdit({ request, params, response, session }: HttpContextContract) {
     const payload = await request.validate(ProfileValidator)
-    const user = await User.find(params.id)
-    if (user) {
-      if (payload.password_old) {
-        const passwordConfirmed = await Hash.verify(user?.password, payload.password_old)
-        if (passwordConfirmed) {
-          if (payload.password) {
-            delete payload.password_old
-            await user.merge(payload).save()
-            session.flash({ success: 'Mise à jour réussie.' })
-            return response.redirect().toRoute('me', { id: params.id })
-          } else {
-            session.flash({ err: 'Saisir le nouveau mot de passe.' })
-            return response.redirect().toRoute('me', { id: params.id })
-          }
-        } else {
-          session.flash({ err: 'Ancien mot de passe invalide.' })
-          return response.redirect().toRoute('me', { id: params.id })
-        }
-      } else {
+    const token = params.token
+    const user = await User.findBy('token', token)
+    if (!user) return
+    if (payload.password_old) {
+      const passwordConfirmed = await Hash.verify(user?.password, payload.password_old)
+      delete payload.password_old
+      if (!passwordConfirmed) {
         await user.merge(payload).save()
-        session.flash({ success: 'Mise à jour réussie.' })
-        return response.redirect().toRoute('me', { id: params.id })
+        session.flash({ err: 'Ancien mot de passe invalide invalides' })
+        return response.redirect().toRoute('me', { token })
       }
     }
+    await user.merge(payload).save()
+    session.flash({ success: 'Mise à jour réussie.' })
+    return response.redirect().toRoute('me', { token })
   }
 
   async logout({ auth, response, session }: HttpContextContract) {
