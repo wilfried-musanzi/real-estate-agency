@@ -2,7 +2,7 @@
 @set('title',"BEST-IMMO | Login" )
 @section('body')
     <section class="section__login">
-        <div class="sub-container">
+        {{--  <div class="sub-container">  --}}
             <form action="" method="POST" class="form form__top">
                 <h4 class="heading__primary center">Se connecter</h4>
                 @component('public/components/input', {
@@ -21,6 +21,6 @@
                 @end
                 <input type="submit" value="Se connecter" />
             </form>
-        </div>
+        {{--  </div>  --}}
     </section>
 @end

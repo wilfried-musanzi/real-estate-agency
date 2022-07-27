@@ -59,9 +59,8 @@ body {
 }
 
 .sub-container {
-  max-width: 70rem;
+  max-width: 100rem;
   margin: 0 auto;
-  padding: 0 3rem;
 }
 a {
   &:link,
@@ -109,38 +108,11 @@ a {
   margin-bottom: 4rem;
 }
 
-.hide {
-  display: none;
-}
-
-.section {
-  transition: opacity 0.3s;
-}
-
-.hidden {
-  opacity: 0;
-  transform: translateY(10rem);
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .transition-fade {
-  transition: 0.4s;
-  transform: translateX(0);
-
-  opacity: 1;
+  transition: 0.3s;
 }
 
 html.is-animating .transition-fade {
-  transform: translateX(-20%);
   opacity: 0;
+  transform: translateX(-10rem);
 }

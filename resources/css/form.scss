@@ -10,7 +10,7 @@ textarea {
   border-radius: 0.4rem;
   box-sizing: border-box;
   resize: vertical;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 input,
@@ -42,10 +42,18 @@ input[type='submit'] {
   color: $light-1;
   padding: 1rem 3rem;
   border: none;
+  font-size: 2rem;
   border-radius: 0.4rem;
   cursor: pointer;
 }
 
 .form {
   border-radius: 0.5rem;
+  background: $light-5;
+  padding: 5rem;
+  width: 50rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
 }
