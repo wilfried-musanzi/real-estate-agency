@@ -1,6 +1,7 @@
 import '../css/main.scss'
 import Toast from './toast'
-import * as Turbo from '@hotwired/turbo'
-Turbo.session.cacheObserver = true
+import Swup from 'swup'
+// import '@hotwired/turbo'
 
+new Swup()
 customElements.define('app-toast', Toast)

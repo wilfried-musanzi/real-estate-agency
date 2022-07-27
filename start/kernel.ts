@@ -5,4 +5,5 @@ Server.middleware.registerNamed({
   auth: () => import('App/Middleware/Auth'),
   silentAuth: () => import('App/Middleware/SilentAuth'),
   secureBackend: () => import('App/Middleware/SecureBackend'),
+  recaptcha: () => import('App/Middleware/Recaptcha'),
 })

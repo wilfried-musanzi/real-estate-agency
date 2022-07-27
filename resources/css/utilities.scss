@@ -10,10 +10,10 @@ $bleue-1: #011627;
 $bleue-2: #00afb9;
 $bleue-3: #033052;
 $bleue-4: #022744;
-$bleue-5: rgb(1, 22, 39);
+$bleue-5: #001845;
 $green: #64ffda;
 $green-2: #2bcfa9;
-$red-1: #ef233c;
+$red-1: #e71d36;
 $red-2: #d80b23;
 
 *,
@@ -37,7 +37,7 @@ html {
 }
 
 body {
-  font-family: Roboto, sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: $light-1;
   color: $dark-1;
   font-size: 1.6rem;
@@ -83,7 +83,7 @@ a {
   &:hover,
   &:active {
     color: $light-1;
-    background: $bleue-4;
+    background: darken($color: $bleue-3, $amount: 1);
   }
 }
 
@@ -99,7 +99,7 @@ a {
   }
   &:hover,
   &:active {
-    background: $green-2;
+    background: darken($color: $green-2, $amount: 1);
   }
 }
 
@@ -122,10 +122,6 @@ a {
   transform: translateY(10rem);
 }
 
-.sticky {
-  background: $bleue-5;
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -135,4 +131,16 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.transition-fade {
+  transition: 0.4s;
+  transform: translateX(0);
+
+  opacity: 1;
+}
+
+html.is-animating .transition-fade {
+  transform: translateX(-20%);
+  opacity: 0;
 }

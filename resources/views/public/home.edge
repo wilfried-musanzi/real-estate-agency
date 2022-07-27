@@ -1,25 +1,24 @@
 @layout('public/base')
-@set('title',"Agence JMK - Acceuil" )
-@section('hero')
-  @include('partials/flash')
-  <div class="hero__body sub-container">
-    <p class="hero__welcome">
-      Des immeubles validés et certifiés par nos experts pour votre plaisir.
-    </p>
-    <p class="hero__description">
-      Nous vous offrons ce services dans toute la ville de pour votre bonheur.
-    </p>
-    <div class="hero__links">
-      <a href="{{ route('properties') }}" class="btn__primary" data-turbo="false">Immeubles</a>
-      <a href="{{ route('contact') }}" class="btn__secondary">Contactez-nous</a>
-    </div>
-  </div>
-@end
-
+@set('title',"BEST-IMMO | Acceuil" )
 @section('body')
+  @include('partials/flash')
+  <section class="hero">
+      <div class="hero__body sub-container">
+        <p class="hero__welcome">
+          Des immeubles validés et certifiés par nos experts pour votre plaisir.
+        </p>
+        <p class="hero__description">
+          Nous vous offrons ce services dans toute la ville de pour votre bonheur.
+        </p>
+        <div class="hero__links">
+          <a href="{{ route('properties') }}" class="btn__primary">Immeubles</a>
+          <a href="{{ route('contact') }}" class="btn__secondary">Contactez-nous</a>
+        </div>
+    </div>
+  </section>
   <section class="section section__properties">
     <div class="container">
-      <h4 class="heading__primary">Les immeubles recents</h4>
+      <h4 class="heading__primary">Les immeubles récents</h4>
       <div class="cards">
         @each(property in properties)
           @include('partials/card')

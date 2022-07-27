@@ -7,7 +7,7 @@
         </li>
         @each(anchor in properties.getUrlsForRange(1, properties.lastPage))  
             <li class="pagination__item">
-                <a href="{{ anchor.url }}" class="pagination__link {{ anchor.isActive ? 'active' : ' '}}" data-turbo="false">{{ anchor.page }}</a>
+                <a href="{{ anchor.url }}" class="pagination__link {{ anchor.isActive ? 'active' : ' '}}">{{ anchor.page }}</a>
             </li>
         @end
         <li class="pagination__item">

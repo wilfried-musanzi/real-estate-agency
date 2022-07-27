@@ -27,4 +27,6 @@ export default Env.rules({
   SMTP_PORT: Env.schema.number(),
   SMTP_USERNAME: Env.schema.string(),
   SMTP_PASSWORD: Env.schema.string(),
+  RECAPTCHA_SITE_KEY: Env.schema.string(),
+  RECAPTCHA_SECRET_KEY: Env.schema.string(),
 })
