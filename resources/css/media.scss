@@ -81,6 +81,12 @@
     width: 80%;
     padding: 3rem;
   }
+  .user__account {
+    &:link,
+    &:visited {
+      font-size: 1.8rem;
+    }
+  }
 }
 
 @media screen and (max-width: 44em) {
