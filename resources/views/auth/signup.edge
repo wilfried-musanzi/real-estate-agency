@@ -3,35 +3,33 @@
 @section('body')
     @include('partials/flash')
     <section class="section__signup">
-        <div class="sub-container">
-            <form method="POST" class="form">  
-                <h4 class="heading__primary center">S'inscire</h4>
-                @component('public/components/input', {
-                    type: 'text',
-                    label: "Nom d'utilisateur",
-                    name: "username",
-                })
-                @end
-                @component('public/components/input', {
-                    type: 'email',
-                    label: "Email",
-                    name: "email",
-                })
-                @end
-                @component('public/components/input', {
-                    type: 'password',
-                    label: "Mot de passe",
-                    name: "password",
-                })
-                @end
-                @component('public/components/input', {
-                    type: 'password',
-                    label: "Confrimation mot de passe",
-                    name: "confirm-password",
-                })
-                @end
-                <input type="submit" value="Soummettre" style="margin-top:2rem; "/>
-            </form>
-        </div>
+        <form method="POST" class="form">  
+            <h4 class="heading__primary center">S'inscire</h4>
+            @component('public/components/input', {
+                type: 'text',
+                label: "Nom d'utilisateur",
+                name: "username",
+            })
+            @end
+            @component('public/components/input', {
+                type: 'email',
+                label: "Email",
+                name: "email",
+            })
+            @end
+            @component('public/components/input', {
+                type: 'password',
+                label: "Mot de passe",
+                name: "password",
+            })
+            @end
+            @component('public/components/input', {
+                type: 'password',
+                label: "Confrimation mot de passe",
+                name: "confirm-password",
+            })
+            @end
+            <input type="submit" value="Soummettre" style="margin-top:2rem; "/>
+        </form>
     </section>
 @end

@@ -12,7 +12,7 @@
         </li>
         <li class="nav__item">
         @if(auth.user)
-          <a href="{{ route('logout') }}"  class="user__logout"><i class="ph-sign-out"></i></a> 
+          <a href="{{ route('logout') }}"  class="user__logout" data-no-swup><i class="ph-sign-out"></i></a> 
         @else
           <a href="{{ route('signup') }}" class="nav__link link__cta">Inscrption</a>
         @end

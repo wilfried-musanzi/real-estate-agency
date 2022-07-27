@@ -14,7 +14,7 @@
         <h3 class="heading__primary">{{ auth.user.roles.includes('admin') ? "Administrateur" : "Utilisateur" }}</h3>
       </div>
       <div class="edit__profile sub-container">
-          <form action="" method="POST" class="form form__top">
+          <form action="" method="POST">
             <h4 class="heading__primary">Mes informations</h4>
             @component('public/components/input', {
               type: 'text',
