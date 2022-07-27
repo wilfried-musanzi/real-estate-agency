@@ -85,7 +85,7 @@ export default class AuthController {
     }
     await user.merge(payload).save()
     session.flash({ success: 'Mise à jour réussie.' })
-    return response.redirect().toRoute('me', { token })
+    return response.redirect().toRoute('home')
   }
 
   async logout({ auth, response, session }: HttpContextContract) {
