@@ -10,6 +10,7 @@ export default class AdminCategory {
       municipalities,
     })
   }
+
   public view({ view }: HttpContextContract) {
     return view.render('admin/municipality/new')
   }
@@ -28,11 +29,17 @@ export default class AdminCategory {
     })
   }
 
-  public async edit({ params, request, session, response }: HttpContextContract) {
+  public async edit({ params, request, session, response, bouncer }: HttpContextContract) {
     const payload = await request.validate(MunicipalityValidator)
     const property = await Municipality.findOrFail(params.id)
-    await property.merge(payload).save()
-    session.flash({ success: 'La commune a été mise à jour.' })
+
+    try {
+      await property.merge(payload).save()
+      await bouncer.authorize('edit')
+      session.flash({ success: 'La commune a été mise à jour.' })
+    } catch {
+      session.flash({ err: 'Pas autorisé à modifier.' })
+    }
     return response.redirect().toRoute('municipality.index')
   }
 

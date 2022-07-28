@@ -110,11 +110,7 @@ a {
   margin-bottom: 4rem;
 }
 
-.transition-fade {
-  transition: 0.3s;
-}
-
-html.is-animating .transition-fade {
-  opacity: 0;
-  transform: translateY(-10rem);
+.swup-progress-bar {
+  height: 4px;
+  background-color: rgb(0, 0, 255);
 }

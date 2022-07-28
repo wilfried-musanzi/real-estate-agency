@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
+import { column, beforeSave, BaseModel, hasMany, HasMany } from '@ioc:Adonis/Lucid/Orm'
 import { RoleId } from 'App/Types/types'
+import Property from './Property'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -18,6 +19,12 @@ export default class User extends BaseModel {
 
   @column()
   public username: string
+
+  @column()
+  public isOwner: boolean
+
+  @hasMany(() => Property)
+  public property: HasMany<typeof Property>
 
   @column({ serializeAs: null })
   public password: string

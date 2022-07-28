@@ -19,6 +19,7 @@ export default class SignupValidator {
     ]),
 
     password: schema.string([rules.confirmed('confirm-password')]),
+    isOwner: schema.boolean.nullableAndOptional(),
   })
 
   public messages: CustomMessages = {

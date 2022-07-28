@@ -24,6 +24,9 @@ export default class Property extends BaseModel {
   @column()
   public reserved: boolean
 
+  @column()
+  public userId: number
+
   @belongsTo(() => Municipality)
   public municipality: BelongsTo<typeof Municipality>
 

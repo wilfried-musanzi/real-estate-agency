@@ -8,7 +8,7 @@ export default class SecureBackend {
     try {
       await bouncer.authorize('accedToAdminPanel')
     } catch {
-      session.flash({ err: 'Accès réservé aux admins !' })
+      session.flash({ err: 'Accès interdit' })
       return response.redirect().toRoute('home')
     }
     await next()

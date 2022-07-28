@@ -7,13 +7,17 @@ import Municipality from 'App/Models/Municipality'
 import { string } from '@ioc:Adonis/Core/Helpers'
 
 export default class AdminProperty {
-  async index({ view, request }: HttpContextContract) {
+  async index({ view, request, auth }: HttpContextContract) {
     const limit = 10
     const page = request.input('page', 1)
-    const properties = await Property.query()
-      .orderBy('id', 'asc')
-      .preload('municipality')
-      .paginate(page, limit)
+    if (!auth.user) return
+    const properties = auth.user.roles.includes('admin')
+      ? await Property.query().orderBy('id', 'asc').preload('municipality').paginate(page, limit)
+      : await Property.query()
+          .orderBy('id', 'asc')
+          .preload('municipality')
+          .where('user_id', auth.user.id)
+          .paginate(page, limit)
     properties.baseUrl('/admin/property')
     return view.render('admin/property/index', {
       page,
@@ -32,8 +36,8 @@ export default class AdminProperty {
     })
   }
 
-  async create({ params, request, session, response }: HttpContextContract) {
-    await this.handleRequest(params, request)
+  async create({ params, request, auth, session, response }: HttpContextContract) {
+    await this.handleRequest(params, request, auth)
     session.flash({ success: 'La proprieté a été créée' })
     return response.redirect().toRoute('property.index', {
       controller: 'adminPropertyController',
@@ -50,8 +54,8 @@ export default class AdminProperty {
     })
   }
 
-  async update({ params, request, session, response }: HttpContextContract) {
-    await this.handleRequest(params, request)
+  async update({ params, request, auth, session, response }: HttpContextContract) {
+    await this.handleRequest(params, request, auth)
     session.flash({ success: 'La proprieté a été mise à jour' })
     return response.redirect().toRoute('property.index', {
       controller: 'adminPropertyController',
@@ -69,7 +73,8 @@ export default class AdminProperty {
 
   async handleRequest(
     params: HttpContextContract['params'],
-    request: HttpContextContract['request']
+    request: HttpContextContract['request'],
+    auth: HttpContextContract['auth']
   ) {
     const id = params.id
     const property = id ? await Property.findOrFail(id) : new Property()
@@ -83,7 +88,12 @@ export default class AdminProperty {
       await thumb.move(Application.resourcesPath('images'))
     }
     property
-      .merge({ ...payload, reserved: payload.reserved || false, thumb: thumb?.fileName })
+      .merge({
+        ...payload,
+        reserved: payload.reserved || false,
+        thumb: thumb?.fileName,
+        userId: auth.user?.id,
+      })
       .save()
   }
 }

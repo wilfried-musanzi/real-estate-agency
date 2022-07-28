@@ -44,26 +44,10 @@
                     <td>{{ municipality.id }}</td>
                     <td>{{ municipality.name }}</td>
                     <td>
-                        <div class="dropdown">
-                            <a
-                                class="text-soft dropdown-toggle btn btn-icon btn-trigger"
-                                data-bs-toggle="dropdown"
-                                data-offset="-8,0"
-                                ><em class="icon ni ni-more-h"></em
-                                ></a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
-                                <ul class="link-list-plain">
-                                    <li>
-                                        <a href="{{ route("municipality.edit", { id: municipality.id }) }}" class="text-primary">Editer</a>
-                                    </li>
-                                    <li>
-                                        <form action="{{ route("municipality.delete", { id: municipality.id }) }}?_method=DELETE" method="POST" style="display:inline-block;" onclick="return confirm('Really sure to delete ?')">
-                                            <button type="submit" class="btn text-danger">Supprimer</button>
-                                        </form>  
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <a href="{{ route("municipality.edit", { id: municipality.id }) }}" class="btn btn-dim btn-primary">Edition</a>
+                        <form action="{{ route("municipality.delete", { id: municipality.id }) }}?_method=DELETE" method="POST" style="display:inline-block;" onclick="return confirm('Really sure to delete ?')">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>  
                     </td>
                 </tr>
                 @end

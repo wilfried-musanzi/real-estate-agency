@@ -57,3 +57,12 @@ input[type='submit'] {
   flex-direction: column;
   margin: 0 auto;
 }
+.checkbox {
+  font-size: 1.9rem;
+  input[type='checkbox'] {
+    width: 1.9rem;
+    height: 1.8rem;
+    margin-right: 1rem;
+    display: inline-block;
+  }
+}

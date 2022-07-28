@@ -27,7 +27,7 @@
   &:visited {
     color: $dark-2;
     font-weight: 300;
-    padding: 1rem 1.5rem;
+    padding: 0.9rem 1.4rem;
     transition: background 0.3s;
     font-size: 1.6rem;
     border-radius: 200%;
@@ -40,7 +40,7 @@
 }
 
 .active {
-  background-color: $bleue-2;
+  background-color: aquamarine;
 }
 
 .pagination__link {

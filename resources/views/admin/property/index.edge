@@ -50,30 +50,14 @@
                         <td>{{ property.municipality ? property.municipality.name : ' ' }}</td>
                         <td>{{ property.price }} $</td>
                         <td>{{ property.surface }} m2</td>
-                        <td class="">
+                        <td>
                             <span class="badge badge-dot {{ property.reserved ? 'bg-success' : 'bg-danger' }}">{{ property.reserved ? "Reserved" : "Free"}}</span>
                         </td>
                         <td>
-                            <div class="dropdown">
-                                <a
-                                    class="text-soft dropdown-toggle btn btn-icon btn-trigger"
-                                    data-bs-toggle="dropdown"
-                                    data-offset="-8,0"
-                                    ><em class="icon ni ni-more-h"></em
-                                  ></a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
-                                    <ul class="link-list-plain">
-                                        <li>
-                                            <a href="{{ route("property.edit", {id: property.id}) }}" class="text-primary">Editer</a>
-                                        </li>
-                                        <li>
-                                             <form action="{{ route("property.delete", { id: property.id})}}?_method=DELETE" method="post" style="display:inline-block;" onclick="return confirm('Really sure to delete ?')">
-                                                <button type="submit" class="btn text-danger">Supprimer</button>
-                                            </form>  
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <a href="{{ route("property.edit", {id: property.id}) }}" class="btn btn-dim btn-primary">Edition</a>
+                            <form action="{{ route("property.delete", { id: property.id})}}?_method=DELETE" method="post" style="display:inline-block;" onclick="return confirm('Really sure to delete ?')">
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>  
                         </td>
                     </tr>
                 @end

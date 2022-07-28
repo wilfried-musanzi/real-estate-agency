@@ -59,6 +59,7 @@ export default class AuthController {
       await User.create({
         ...payload,
         roles: (await User.first()) == null ? ['admin'] : ['user'],
+        isOwner: payload.isOwner || false,
         token,
       })
       session.flash({ success: 'Vérfiez votre boite mail pour activer le compte.' })

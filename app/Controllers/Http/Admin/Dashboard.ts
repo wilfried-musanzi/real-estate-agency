@@ -4,19 +4,17 @@ import Property from 'App/Models/Property'
 import User from 'App/Models/User'
 
 export default class AdminDashboard {
-  async index({ view }: HttpContextContract) {
-    const properties = await Property.query().count('id')
-    let [{ $extras: extraProp }] = properties
-    const { count: countProp } = extraProp
+  async index({ view, auth }: HttpContextContract) {
+    if (!auth.user) return
+    const properties = auth.user?.roles.includes('admin')
+      ? await Property.query().paginate(1, 20)
+      : await Property.query().where('user_id', auth.user?.id).paginate(1, 20)
 
-    const category = await Municipality.query().count('id')
-    let [{ $extras: extraCat }] = category
-    const { count: countCat } = extraCat
-
-    const user = await User.query().count('id')
-    let [{ $extras: extraUser }] = user
-    const { count: countUser } = extraUser
-
+    const countProp = properties.total
+    const category = await Municipality.query().paginate(1, 20)
+    const countCat = category.total
+    const user = await User.query().paginate(1, 20)
+    const countUser = user.total
     return view.render('admin/dashboard', {
       countProp,
       countCat,

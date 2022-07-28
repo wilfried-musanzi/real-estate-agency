@@ -71,6 +71,7 @@
     "@adonisjs/shield": "^7.0.0",
     "@adonisjs/view": "^6.1.0",
     "@hotwired/turbo": "^7.1.0",
+    "@swup/progress-plugin": "^1.1.2",
     "@swup/slide-theme": "^1.0.5",
     "adonis-recaptcha2": "^2.0.1",
     "luxon": "^3.0.1",
